@@ -153,6 +153,19 @@
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
     <fields>
+        <fullName>AssignedTeamLeader__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Team Leader asignado</label>
+        <referenceTo>Employee__c</referenceTo>
+        <relationshipLabel>Subordinados</relationshipLabel>
+        <relationshipName>Empleados</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
         <fullName>CompanyId__c</fullName>
         <caseSensitive>false</caseSensitive>
         <externalId>false</externalId>
@@ -163,6 +176,42 @@
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>DailyWage__c</fullName>
+        <externalId>false</externalId>
+        <formula>CASE( MONTH(TODAY()) ,
+            1, MonthlyWage__c/31,
+            3, MonthlyWage__c/31,
+            4, MonthlyWage__c/30,
+            5, MonthlyWage__c/31,
+            6, MonthlyWage__c/30,
+            7, MonthlyWage__c/31,
+            8, MonthlyWage__c/31,
+            9, MonthlyWage__c/30,
+            10,MonthlyWage__c/31,
+            11,MonthlyWage__c/30,
+            12,MonthlyWage__c/31,
+            MonthlyWage__c/28)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Salario diario</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>FullName__c</fullName>
+        <externalId>false</externalId>
+        <formula>LinkedUser__r.FirstName  &amp; &quot; &quot; &amp;  LinkedUser__r.LastName</formula>
+        <label>Nombre completo</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>Level__c</fullName>
@@ -240,6 +289,18 @@
         </valueSet>
     </fields>
     <fields>
+        <fullName>LinkedUser__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Usuario vinculado</label>
+        <referenceTo>User</referenceTo>
+        <relationshipName>Empleados</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
         <fullName>MarriageStatus__c</fullName>
         <externalId>false</externalId>
         <label>Estado civil</label>
@@ -265,6 +326,15 @@
         </valueSet>
     </fields>
     <fields>
+        <fullName>MobileNumber__c</fullName>
+        <externalId>false</externalId>
+        <label>Número de móvil</label>
+        <required>true</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Phone</type>
+    </fields>
+    <fields>
         <fullName>MobilePhone__c</fullName>
         <externalId>false</externalId>
         <label>Teléfono móvil</label>
@@ -272,6 +342,17 @@
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Phone</type>
+    </fields>
+    <fields>
+        <fullName>MonthlyWage__c</fullName>
+        <externalId>false</externalId>
+        <label>Salario mensual</label>
+        <precision>9</precision>
+        <required>true</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
     </fields>
     <fields>
         <fullName>isTeamLeader__c</fullName>
@@ -290,7 +371,7 @@
     </listViews>
     <nameField>
         <displayFormat>E-{00000}</displayFormat>
-        <label>Empleado Name</label>
+        <label>Número de empleado</label>
         <trackHistory>false</trackHistory>
         <type>AutoNumber</type>
     </nameField>
@@ -303,6 +384,20 @@
         <errorConditionFormula>CONTAINS( CompanyId__c , &quot;techconsultant.com&quot;)  = False</errorConditionFormula>
         <errorDisplayField>CompanyId__c</errorDisplayField>
         <errorMessage>El Id de empresa no es correcto</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>LinkedUserNotChanged</fullName>
+        <active>true</active>
+        <description>Comprobación de que sólo se ha asignado un usuario vinculado</description>
+        <errorConditionFormula>AND( !ISBLANK(FullName__c) , ISNEW() = False  )</errorConditionFormula>
+        <errorMessage>El usuario vinculado no puede cambiarse</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>SameMobileAsUser</fullName>
+        <active>true</active>
+        <errorConditionFormula>MobilePhone__c  &lt;&gt; LinkedUser__r.MobilePhone</errorConditionFormula>
+        <errorDisplayField>MobileNumber__c</errorDisplayField>
+        <errorMessage>El teléfono del empleado debe ser igual al del usuario al que está vinculado</errorMessage>
     </validationRules>
     <visibility>Public</visibility>
 </CustomObject>
