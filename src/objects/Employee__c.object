@@ -181,18 +181,18 @@
         <fullName>DailyWage__c</fullName>
         <externalId>false</externalId>
         <formula>CASE( MONTH(TODAY()) ,
-            1, MonthlyWage__c/31,
-            3, MonthlyWage__c/31,
-            4, MonthlyWage__c/30,
-            5, MonthlyWage__c/31,
-            6, MonthlyWage__c/30,
-            7, MonthlyWage__c/31,
-            8, MonthlyWage__c/31,
-            9, MonthlyWage__c/30,
-            10,MonthlyWage__c/31,
-            11,MonthlyWage__c/30,
-            12,MonthlyWage__c/31,
-            MonthlyWage__c/28)</formula>
+1, MonthlyWage__c/31,
+3, MonthlyWage__c/31,
+4, MonthlyWage__c/30,
+5, MonthlyWage__c/31,
+6, MonthlyWage__c/30,
+7, MonthlyWage__c/31,
+8, MonthlyWage__c/31,
+9, MonthlyWage__c/30,
+10,MonthlyWage__c/31,
+11,MonthlyWage__c/30,
+12,MonthlyWage__c/31,
+MonthlyWage__c/28)</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>Salario diario</label>
         <precision>18</precision>
