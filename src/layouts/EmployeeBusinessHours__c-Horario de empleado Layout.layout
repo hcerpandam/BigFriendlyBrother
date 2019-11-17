@@ -12,50 +12,75 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Required</behavior>
-                <field>Level__c</field>
+                <field>MondayStartTime__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Required</behavior>
-                <field>CompanyId__c</field>
+                <field>MondayEndTime__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Required</behavior>
-                <field>MarriageStatus__c</field>
+                <field>TuesdayStartTime__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Required</behavior>
-                <field>MobilePhone__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>isTeamLeader__c</field>
+                <field>TuesdayEndTime__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Required</behavior>
-                <field>MonthlyWage__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>DailyWage__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>LinkedUser__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>AssignedTeamLeader__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>FullName__c</field>
+                <field>WednesdayStartTime__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Required</behavior>
-                <field>EmployeeBusinessHours__c</field>
+                <field>WednesdayEndTime__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Required</behavior>
+                <field>ThursdayStartTime__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Required</behavior>
+                <field>ThursdayEndTime__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Required</behavior>
+                <field>FridayStartTime__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Required</behavior>
+                <field>FridayEndTime__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Required</behavior>
+                <field>SaturdayStartTime__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Required</behavior>
+                <field>SaturdayEndTime__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Required</behavior>
+                <field>SundayStartTime__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Required</behavior>
+                <field>SundayEndTime__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Required</behavior>
+                <field>StartingDay__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Required</behavior>
+                <field>EndDate__c</field>
             </layoutItems>
         </layoutColumns>
-        <layoutColumns/>
+        <layoutColumns>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>OwnerId</field>
+            </layoutItems>
+        </layoutColumns>
         <style>TwoColumnsTopToBottom</style>
     </layoutSections>
     <layoutSections>
@@ -106,15 +131,8 @@
         <relatedList>RelatedHistoryList</relatedList>
     </relatedLists>
     <relatedLists>
-        <fields>Name</fields>
-        <fields>AddressType</fields>
-        <fields>Parent</fields>
-        <fields>LocationType</fields>
-        <relatedList>Address.LinkedEmployee__c</relatedList>
-    </relatedLists>
-    <relatedLists>
         <fields>NAME</fields>
-        <relatedList>Employee__c.AssignedTeamLeader__c</relatedList>
+        <relatedList>Employee__c.EmployeeBusinessHours__c</relatedList>
     </relatedLists>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showHighlightsPanel>false</showHighlightsPanel>
