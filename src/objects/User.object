@@ -243,4 +243,11 @@
         <searchResultsAdditionalFields>CORE.USERS.EMAIL</searchResultsAdditionalFields>
     </searchLayouts>
     <sharingModel>Read</sharingModel>
+    <validationRules>
+        <fullName>UserMobileIsRequired</fullName>
+        <active>true</active>
+        <errorConditionFormula>ISNULL(MobilePhone)</errorConditionFormula>
+        <errorDisplayField>MobilePhone</errorDisplayField>
+        <errorMessage>El teléfono móvil del usuario debe estar informado</errorMessage>
+    </validationRules>
 </CustomObject>
