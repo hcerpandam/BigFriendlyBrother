@@ -161,7 +161,7 @@
         <relationshipLabel>Subordinados</relationshipLabel>
         <relationshipName>Empleados</relationshipName>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
@@ -172,10 +172,21 @@
         <label>Id de Empresa</label>
         <length>50</length>
         <required>true</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>CurrentGeolocation__c</fullName>
+        <displayLocationInDecimal>true</displayLocationInDecimal>
+        <externalId>false</externalId>
+        <label>Ubicación actual</label>
+        <required>false</required>
+        <scale>3</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Location</type>
     </fields>
     <fields>
         <fullName>DailyWage__c</fullName>
@@ -203,18 +214,15 @@ MonthlyWage__c/28)</formula>
         <type>Currency</type>
     </fields>
     <fields>
-        <fullName>EmployeeBusinessHours__c</fullName>
+        <fullName>EmployeeEmail__c</fullName>
+        <caseSensitive>true</caseSensitive>
         <externalId>false</externalId>
-        <label>Horario de empleado</label>
-        <referenceTo>EmployeeBusinessHours__c</referenceTo>
-        <relationshipLabel>Empleados</relationshipLabel>
-        <relationshipName>HorariosDeEmpleado</relationshipName>
-        <relationshipOrder>0</relationshipOrder>
-        <reparentableMasterDetail>true</reparentableMasterDetail>
-        <trackHistory>false</trackHistory>
+        <label>Email del empleado</label>
+        <required>true</required>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
-        <type>MasterDetail</type>
-        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+        <type>Email</type>
+        <unique>true</unique>
     </fields>
     <fields>
         <fullName>FullName__c</fullName>
@@ -230,9 +238,9 @@ MonthlyWage__c/28)</formula>
     <fields>
         <fullName>Level__c</fullName>
         <externalId>false</externalId>
-        <label>Categoría</label>
+        <label>Categoría profesional</label>
         <required>true</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
@@ -310,7 +318,7 @@ MonthlyWage__c/28)</formula>
         <referenceTo>User</referenceTo>
         <relationshipName>Empleados</relationshipName>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
@@ -319,7 +327,7 @@ MonthlyWage__c/28)</formula>
         <externalId>false</externalId>
         <label>Estado civil</label>
         <required>true</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
@@ -344,7 +352,7 @@ MonthlyWage__c/28)</formula>
         <externalId>false</externalId>
         <label>Teléfono móvil</label>
         <required>true</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Phone</type>
     </fields>
@@ -355,7 +363,7 @@ MonthlyWage__c/28)</formula>
         <precision>9</precision>
         <required>true</required>
         <scale>2</scale>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Currency</type>
     </fields>
@@ -364,7 +372,7 @@ MonthlyWage__c/28)</formula>
         <defaultValue>false</defaultValue>
         <externalId>false</externalId>
         <label>Es Team leader</label>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
     </fields>
@@ -382,7 +390,7 @@ MonthlyWage__c/28)</formula>
     </nameField>
     <pluralLabel>Empleados</pluralLabel>
     <searchLayouts/>
-    <sharingModel>ControlledByParent</sharingModel>
+    <sharingModel>ReadWrite</sharingModel>
     <validationRules>
         <fullName>CompanyIdFormat</fullName>
         <active>true</active>
@@ -396,6 +404,13 @@ MonthlyWage__c/28)</formula>
         <description>Comprobación de que sólo se ha asignado un usuario vinculado</description>
         <errorConditionFormula>AND( !ISBLANK(FullName__c) , ISNEW() = False  )</errorConditionFormula>
         <errorMessage>El usuario vinculado no puede cambiarse</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>SameEmailAsUser</fullName>
+        <active>true</active>
+        <errorConditionFormula>EmployeeEmail__c  &lt;&gt;  LinkedUser__r.Email</errorConditionFormula>
+        <errorDisplayField>EmployeeEmail__c</errorDisplayField>
+        <errorMessage>El email del empleado no puede ser distinto del de su usuario vinculado</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>SameMobileAsUser</fullName>

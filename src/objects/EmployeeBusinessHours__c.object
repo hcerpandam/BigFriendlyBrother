@@ -198,6 +198,20 @@
         <type>Time</type>
     </fields>
     <fields>
+        <fullName>RelatedEmployee__c</fullName>
+        <externalId>false</externalId>
+        <label>Empleado vinculado</label>
+        <referenceTo>Employee__c</referenceTo>
+        <relationshipLabel>Horario de empleados</relationshipLabel>
+        <relationshipName>HorariosDeEmpleado</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>true</reparentableMasterDetail>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
         <fullName>SaturdayEndTime__c</fullName>
         <externalId>false</externalId>
         <label>Sábado: Hora de salida</label>
@@ -310,6 +324,6 @@
     </nameField>
     <pluralLabel>Horario de empleados</pluralLabel>
     <searchLayouts/>
-    <sharingModel>ReadWrite</sharingModel>
+    <sharingModel>ControlledByParent</sharingModel>
     <visibility>Public</visibility>
 </CustomObject>
