@@ -140,7 +140,7 @@
         <formFactor>Small</formFactor>
         <type>Default</type>
     </actionOverrides>
-    <allowInChatterGroups>false</allowInChatterGroups>
+    <allowInChatterGroups>true</allowInChatterGroups>
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>
     <enableActivities>true</enableActivities>
@@ -153,19 +153,91 @@
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
     <fields>
-        <fullName>AbsenceEnd__c</fullName>
+        <fullName>GeolocationOnCheckEndWorkingHours__c</fullName>
+        <displayLocationInDecimal>false</displayLocationInDecimal>
         <externalId>false</externalId>
-        <label>Fin del permiso</label>
+        <label>Ubicación al comprobar fin de jornada</label>
+        <required>false</required>
+        <scale>6</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Location</type>
+    </fields>
+    <fields>
+        <fullName>LinkedEmployee__c</fullName>
+        <externalId>false</externalId>
+        <label>Empleado vinculado</label>
+        <referenceTo>Employee__c</referenceTo>
+        <relationshipLabel>Registros de control</relationshipLabel>
+        <relationshipName>TimeControlRecords</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>true</reparentableMasterDetail>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>ModifiedByTeamLeader__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Modificado por Team Leader</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>MustDoOvertime__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Permiso para realizar horas extra</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>RecordDate__c</fullName>
+        <externalId>false</externalId>
+        <label>Fecha de registro</label>
         <required>true</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>SelectedEndWorkingHours__c</fullName>
+        <externalId>false</externalId>
+        <label>Hora marcada fin de trabajo</label>
+        <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>DateTime</type>
     </fields>
     <fields>
-        <fullName>AbsenceReason__c</fullName>
+        <fullName>StarWorkingTime__c</fullName>
         <externalId>false</externalId>
-        <label>Motivo de ausencia</label>
-        <required>true</required>
+        <label>Hora de inicio de trabajo</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>StartWorkingHoursGeolocation__c</fullName>
+        <displayLocationInDecimal>true</displayLocationInDecimal>
+        <externalId>false</externalId>
+        <label>Ubicación al iniciar jornada</label>
+        <required>false</required>
+        <scale>6</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Location</type>
+    </fields>
+    <fields>
+        <fullName>Status__c</fullName>
+        <externalId>false</externalId>
+        <label>Estado del registro</label>
+        <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
@@ -174,130 +246,73 @@
             <valueSetDefinition>
                 <sorted>false</sorted>
                 <value>
-                    <fullName>Festivo</fullName>
+                    <fullName>Aceptado</fullName>
                     <default>false</default>
-                    <label>Festivo</label>
+                    <label>Aceptado</label>
                 </value>
                 <value>
-                    <fullName>Elecciones sindicales</fullName>
+                    <fullName>Contencioso</fullName>
                     <default>false</default>
-                    <label>Elecciones sindicales</label>
+                    <label>Contencioso</label>
                 </value>
                 <value>
-                    <fullName>Comité de empresa, seguridad y salud</fullName>
+                    <fullName>Resuelto Inspección</fullName>
                     <default>false</default>
-                    <label>Comité de empresa, seguridad y salud</label>
-                </value>
-                <value>
-                    <fullName>Deber de carácter público</fullName>
-                    <default>false</default>
-                    <label>Deber de carácter público</label>
-                </value>
-                <value>
-                    <fullName>Matrimonio</fullName>
-                    <default>false</default>
-                    <label>Matrimonio</label>
-                </value>
-                <value>
-                    <fullName>Traslado de domicilio habitual</fullName>
-                    <default>false</default>
-                    <label>Traslado de domicilio habitual</label>
-                </value>
-                <value>
-                    <fullName>Vacaciones</fullName>
-                    <default>false</default>
-                    <label>Vacaciones</label>
-                </value>
-                <value>
-                    <fullName>Enfermedad no laboral</fullName>
-                    <default>false</default>
-                    <label>Enfermedad no laboral</label>
-                </value>
-                <value>
-                    <fullName>Enfermedad laboral</fullName>
-                    <default>false</default>
-                    <label>Enfermedad laboral</label>
-                </value>
-                <value>
-                    <fullName>Permiso maternidad/paternidad</fullName>
-                    <default>false</default>
-                    <label>Permiso maternidad/paternidad</label>
-                </value>
-                <value>
-                    <fullName>Formación (instructor)</fullName>
-                    <default>false</default>
-                    <label>Formación (instructor)</label>
-                </value>
-                <value>
-                    <fullName>Formación (alumno)</fullName>
-                    <default>false</default>
-                    <label>Formación (alumno)</label>
-                </value>
-                <value>
-                    <fullName>Evaluación (evaluador)</fullName>
-                    <default>false</default>
-                    <label>Evaluación (evaluador)</label>
-                </value>
-                <value>
-                    <fullName>Evaluación (evaluado)</fullName>
-                    <default>false</default>
-                    <label>Evaluación (evaluado)</label>
-                </value>
-                <value>
-                    <fullName>Fallecimiento/Enfermedad hasta segundo grado</fullName>
-                    <default>false</default>
-                    <label>Fallecimiento/Enfermedad hasta segundo grado</label>
-                </value>
-                <value>
-                    <fullName>Apagón eléctrico</fullName>
-                    <default>false</default>
-                    <label>Apagón eléctrico</label>
-                </value>
-                <value>
-                    <fullName>Incidencia dispositivo informático</fullName>
-                    <default>false</default>
-                    <label>Incidencia dispositivo informático</label>
+                    <label>Resuelto Inspección</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
     </fields>
     <fields>
-        <fullName>AbsenceStart__c</fullName>
+        <fullName>TimeEndWorkingHoursControl__c</fullName>
         <externalId>false</externalId>
-        <label>Inicio del permiso</label>
-        <required>true</required>
+        <formula>SelectedEndWorkingHours__c +(0.5/24)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Hora de comprobación fin de trabajo</label>
+        <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>DateTime</type>
     </fields>
     <fields>
-        <fullName>LinkedEmployee__c</fullName>
+        <fullName>WIReviewed__c</fullName>
+        <defaultValue>false</defaultValue>
         <externalId>false</externalId>
-        <label>Empleado vinculado</label>
-        <referenceTo>Employee__c</referenceTo>
-        <relationshipLabel>Ausencias</relationshipLabel>
-        <relationshipName>Ausencias</relationshipName>
-        <relationshipOrder>0</relationshipOrder>
-        <reparentableMasterDetail>true</reparentableMasterDetail>
+        <label>Revisado por Inspección de Trabajo</label>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
-        <type>MasterDetail</type>
-        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+        <type>Checkbox</type>
     </fields>
-    <label>Ausencia</label>
+    <fields>
+        <fullName>isTeleworking__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Teletrabajo</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <label>Registro de control</label>
     <listViews>
         <fullName>All</fullName>
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>
     <nameField>
-        <displayFormat>AUS-{00000}</displayFormat>
+        <displayFormat>RC-{00000000}</displayFormat>
         <label>Name</label>
         <trackHistory>false</trackHistory>
         <type>AutoNumber</type>
     </nameField>
-    <pluralLabel>Ausencias</pluralLabel>
+    <pluralLabel>Registros de control</pluralLabel>
     <searchLayouts/>
     <sharingModel>ControlledByParent</sharingModel>
+    <validationRules>
+        <fullName>OnlyTeamLeaderCanModifyMustDoOverTime</fullName>
+        <active>true</active>
+        <errorConditionFormula>LinkedEmployee__r.isTeamLeader__c = false &amp;&amp;  ISCHANGED( MustDoOvertime__c )</errorConditionFormula>
+        <errorDisplayField>MustDoOvertime__c</errorDisplayField>
+        <errorMessage>Solo el Team Leader puede dar permiso para realizar horas extra</errorMessage>
+    </validationRules>
     <visibility>Public</visibility>
 </CustomObject>
