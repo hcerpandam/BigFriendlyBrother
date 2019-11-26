@@ -16,6 +16,11 @@
     <tabs>standard-report</tabs>
     <tabs>standard-Dashboard</tabs>
     <tabs>Employee__c</tabs>
+    <tabs>EmployeeBusinessHours__c</tabs>
+    <tabs>PersonalAbsences__c</tabs>
+    <tabs>Headquarters__c</tabs>
+    <tabs>TimeRecordControl__c</tabs>
+    <tabs>MonthlyTimeRecordControl__c</tabs>
     <uiType>Lightning</uiType>
     <utilityBar>Big_Friendly_Brother_UtilityBar</utilityBar>
 </CustomApplication>

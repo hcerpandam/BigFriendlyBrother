@@ -1,0 +1,519 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>true</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>BreakRange__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(
+(((HOUR(FirstBreakEnd__c ) - HOUR(FirstBreakStart__c)) + ((MINUTE(FirstBreakEnd__c ) - MINUTE(FirstBreakStart__c ))/60))+
+((HOUR(SecondBreakEnd__c) - HOUR(SecondBreakStart__c)) + ((MINUTE(FirstBreakEnd__c ) - MINUTE(FirstBreakStart__c ))/60))+
+((HOUR(ThirdBreakEnd__c) - HOUR(ThirdBreakStart__c)) + ((MINUTE(ThirdBreakEnd__c) - MINUTE(ThirdBreakStart__c))/60)))&lt;=0.25
+, 
+0,
+(((HOUR(FirstBreakEnd__c ) - HOUR(FirstBreakStart__c)) + ((MINUTE(FirstBreakEnd__c ) - MINUTE(FirstBreakStart__c ))/60))+
+((HOUR(SecondBreakEnd__c) - HOUR(SecondBreakStart__c)) + ((MINUTE(FirstBreakEnd__c ) - MINUTE(FirstBreakStart__c ))/60))+
+((HOUR(ThirdBreakEnd__c) - HOUR(ThirdBreakStart__c)) + ((MINUTE(ThirdBreakEnd__c) - MINUTE(ThirdBreakStart__c))/60)))-0.25)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Duración descansos</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>EmployeeHasLeftWorkplace__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(
+(LEFT(TEXT( GeolocationOnCheckEndWorkingHours__Latitude__s ), 6)  &lt;&gt; LEFT(TEXT( StartWorkingHoursGeolocation__Latitude__s ), 6)) &amp;&amp;
+(LEFT(TEXT( GeolocationOnCheckEndWorkingHours__Longitude__s ), 6)  &lt;&gt; LEFT(TEXT( StartWorkingHoursGeolocation__Longitude__s ), 6)) &amp;&amp;  NOW()  = TimeEndWorkingHoursControl__c , 
+TRUE,
+FALSE)</formula>
+        <label>Validación correcta abandono sede</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>FirstBreakEnd__c</fullName>
+        <externalId>false</externalId>
+        <label>Fin del primer descanso</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Time</type>
+    </fields>
+    <fields>
+        <fullName>FirstBreakStart__c</fullName>
+        <externalId>false</externalId>
+        <label>Inicio del primer descanso</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Time</type>
+    </fields>
+    <fields>
+        <fullName>FirstCheckInsertion__c</fullName>
+        <externalId>false</externalId>
+        <label>Hora inserción primer control</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Time</type>
+    </fields>
+    <fields>
+        <fullName>FirstCheckTime__c</fullName>
+        <externalId>false</externalId>
+        <label>Hora solicitud primer control</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Time</type>
+    </fields>
+    <fields>
+        <fullName>GeolocationOnCheckEndWorkingHours__c</fullName>
+        <displayLocationInDecimal>true</displayLocationInDecimal>
+        <externalId>false</externalId>
+        <label>Ubicación al comprobar fin de jornada</label>
+        <required>false</required>
+        <scale>5</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Location</type>
+    </fields>
+    <fields>
+        <fullName>IsCopy__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Es copia</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>LaunchFinish__c</fullName>
+        <externalId>false</externalId>
+        <label>Fin de comida</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Time</type>
+    </fields>
+    <fields>
+        <fullName>LaunchRange__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF((HOUR(LaunchFinish__c ) - HOUR(LaunchStart__c )) + ((MINUTE(LaunchFinish__c ) - MINUTE(LaunchStart__c ))/60)&gt;1.00, (HOUR(LaunchFinish__c ) - HOUR(LaunchStart__c )) + ((MINUTE(LaunchFinish__c ) - MINUTE(LaunchStart__c ))/60),1.00)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Duración de comida</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>LaunchStart__c</fullName>
+        <externalId>false</externalId>
+        <label>Inicio de comida</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Time</type>
+    </fields>
+    <fields>
+        <fullName>OvertimeCheckControls__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(
+((HOUR(FirstCheckInsertion__c) - HOUR(FirstCheckTime__c))+(MINUTE(FirstCheckInsertion__c)-MINUTE(FirstCheckTime__c))/60)&lt;=0.1, 
+0,
+(HOUR(FirstCheckInsertion__c) - HOUR(FirstCheckTime__c))+(MINUTE(FirstCheckInsertion__c)-MINUTE(FirstCheckTime__c))/60)+
+IF(
+((HOUR(SecondCheckInsertion__c ) - HOUR(SecondCheckTime__c))+(MINUTE(SecondCheckInsertion__c )-MINUTE(SecondCheckTime__c))/60)&lt;=0.1, 
+0,
+(HOUR(SecondCheckInsertion__c ) - HOUR(SecondCheckTime__c))+(MINUTE(SecondCheckInsertion__c )-MINUTE(SecondCheckTime__c))/60)+
+IF(
+((HOUR(ThirdCheckInsertion__c ) - HOUR(ThirdCheckTime__c ))+(MINUTE(ThirdCheckInsertion__c )-MINUTE(ThirdCheckTime__c ))/60)&lt;=0.1, 
+0,
+(HOUR(ThirdCheckInsertion__c ) - HOUR(ThirdCheckTime__c ))+(MINUTE(ThirdCheckInsertion__c )-MINUTE(ThirdCheckTime__c ))/60)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Exceso en inserción códigos de control</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>RecordDate__c</fullName>
+        <externalId>false</externalId>
+        <label>Fecha de registro</label>
+        <required>true</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>RecordedByCompany__c</fullName>
+        <externalId>false</externalId>
+        <label>Registrado por compañía</label>
+        <precision>4</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SecondBreakEnd__c</fullName>
+        <externalId>false</externalId>
+        <label>Fin del segundo descanso</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Time</type>
+    </fields>
+    <fields>
+        <fullName>SecondBreakStart__c</fullName>
+        <externalId>false</externalId>
+        <label>Inicio del segundo descanso</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Time</type>
+    </fields>
+    <fields>
+        <fullName>SecondCheckInsertion__c</fullName>
+        <externalId>false</externalId>
+        <label>Hora inserción segundo control</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Time</type>
+    </fields>
+    <fields>
+        <fullName>SecondCheckTime__c</fullName>
+        <externalId>false</externalId>
+        <label>Hora solicitud segundo control</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Time</type>
+    </fields>
+    <fields>
+        <fullName>SelectedEndWorkingHours__c</fullName>
+        <externalId>false</externalId>
+        <label>Hora marcada fin de trabajo</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>StarWorkingTime__c</fullName>
+        <externalId>false</externalId>
+        <label>Hora de inicio de trabajo</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>StartWorkingHoursGeolocation__c</fullName>
+        <displayLocationInDecimal>true</displayLocationInDecimal>
+        <externalId>false</externalId>
+        <label>Ubicación al iniciar jornada</label>
+        <required>false</required>
+        <scale>5</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Location</type>
+    </fields>
+    <fields>
+        <fullName>Status__c</fullName>
+        <externalId>false</externalId>
+        <label>Estado del registro</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Aceptado</fullName>
+                    <default>false</default>
+                    <label>Aceptado</label>
+                </value>
+                <value>
+                    <fullName>Fraudulento</fullName>
+                    <default>false</default>
+                    <label>Fraudulento</label>
+                </value>
+                <value>
+                    <fullName>Contencioso</fullName>
+                    <default>false</default>
+                    <label>Contencioso</label>
+                </value>
+                <value>
+                    <fullName>Resuelto Inspección</fullName>
+                    <default>false</default>
+                    <label>Resuelto Inspección</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>ThirdBreakEnd__c</fullName>
+        <externalId>false</externalId>
+        <label>Fin del tercer descanso</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Time</type>
+    </fields>
+    <fields>
+        <fullName>ThirdBreakStart__c</fullName>
+        <externalId>false</externalId>
+        <label>Inicio del tercer descanso</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Time</type>
+    </fields>
+    <fields>
+        <fullName>ThirdCheckInsertion__c</fullName>
+        <externalId>false</externalId>
+        <label>Hora inserción tercer control</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Time</type>
+    </fields>
+    <fields>
+        <fullName>ThirdCheckTime__c</fullName>
+        <externalId>false</externalId>
+        <label>Hora solicitud tercer control</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Time</type>
+    </fields>
+    <fields>
+        <fullName>TimeEndWorkingHoursControl__c</fullName>
+        <externalId>false</externalId>
+        <formula>SelectedEndWorkingHours__c +(0.5/24)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Hora de comprobación fin de trabajo</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>TimeRecordControlId__c</fullName>
+        <externalId>false</externalId>
+        <label>Registro de control mensual</label>
+        <referenceTo>MonthlyTimeRecordControl__c</referenceTo>
+        <relationshipLabel>Registros de control</relationshipLabel>
+        <relationshipName>TimeRecordControls</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>true</reparentableMasterDetail>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>WIReviewed__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Revisado por Inspección de Trabajo</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>isTeleworking__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Teletrabajo</label>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <label>Registro de control</label>
+    <listViews>
+        <fullName>All</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <displayFormat>RC-{00000000}</displayFormat>
+        <label>Referencia</label>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Registros de control</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ControlledByParent</sharingModel>
+    <visibility>Public</visibility>
+</CustomObject>

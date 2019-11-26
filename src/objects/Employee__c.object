@@ -153,17 +153,16 @@
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
     <fields>
-        <fullName>AssignedTeamLeader__c</fullName>
-        <deleteConstraint>SetNull</deleteConstraint>
+        <fullName>ByContractMustWorkHours__c</fullName>
         <externalId>false</externalId>
-        <label>Team Leader asignado</label>
-        <referenceTo>Employee__c</referenceTo>
-        <relationshipLabel>Subordinados</relationshipLabel>
-        <relationshipName>Empleados</relationshipName>
-        <required>false</required>
-        <trackHistory>true</trackHistory>
+        <label>Horas mensuales por contrato</label>
+        <precision>5</precision>
+        <required>true</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
-        <type>Lookup</type>
+        <type>Number</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>CompanyId__c</fullName>
@@ -183,7 +182,7 @@
         <externalId>false</externalId>
         <label>Ubicación actual</label>
         <required>false</required>
-        <scale>3</scale>
+        <scale>5</scale>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Location</type>
@@ -214,6 +213,32 @@ MonthlyWage__c/28)</formula>
         <type>Currency</type>
     </fields>
     <fields>
+        <fullName>EmployeeAddress__c</fullName>
+        <deleteConstraint>Restrict</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Dirección del empleado</label>
+        <referenceTo>Address</referenceTo>
+        <relationshipLabel>Empleados</relationshipLabel>
+        <relationshipName>Empleados</relationshipName>
+        <required>true</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>EmployeeBusinessHoursId__c</fullName>
+        <deleteConstraint>Restrict</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Horario de empleado</label>
+        <referenceTo>EmployeeBusinessHours__c</referenceTo>
+        <relationshipLabel>Empleados</relationshipLabel>
+        <relationshipName>Empleados</relationshipName>
+        <required>true</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
         <fullName>EmployeeEmail__c</fullName>
         <caseSensitive>true</caseSensitive>
         <externalId>false</externalId>
@@ -234,6 +259,25 @@ MonthlyWage__c/28)</formula>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>InCompany__c</fullName>
+        <externalId>false</externalId>
+        <formula>LinkedUser__r.IsActive</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>En activo</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>IsTeamLeader__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Es Team leader</label>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
     </fields>
     <fields>
         <fullName>Level__c</fullName>
@@ -368,13 +412,30 @@ MonthlyWage__c/28)</formula>
         <type>Currency</type>
     </fields>
     <fields>
-        <fullName>isTeamLeader__c</fullName>
-        <defaultValue>false</defaultValue>
+        <fullName>PerDayWage__c</fullName>
         <externalId>false</externalId>
-        <label>Es Team leader</label>
-        <trackHistory>true</trackHistory>
+        <formula>DailyWage__c /  ByContractMustWorkHours__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Salario por hora</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
-        <type>Checkbox</type>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>PersonalAbsencesId__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Ausencia</label>
+        <referenceTo>PersonalAbsences__c</referenceTo>
+        <relationshipLabel>Empleados</relationshipLabel>
+        <relationshipName>Empleados</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
     </fields>
     <label>Empleado</label>
     <listViews>
@@ -394,9 +455,16 @@ MonthlyWage__c/28)</formula>
     <validationRules>
         <fullName>CompanyIdFormat</fullName>
         <active>true</active>
-        <errorConditionFormula>CONTAINS( CompanyId__c , &quot;techconsultant.com&quot;)  = False</errorConditionFormula>
+        <errorConditionFormula>CONTAINS( CompanyId__c , &quot;@techconsultant.com&quot;)  = False</errorConditionFormula>
         <errorDisplayField>CompanyId__c</errorDisplayField>
-        <errorMessage>El Id de empresa no es correcto</errorMessage>
+        <errorMessage>El Id de empresa debe seguir el formato xxx@techconsultant.com</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>HasLinkedUser</fullName>
+        <active>true</active>
+        <errorConditionFormula>LinkedUser__c  = null</errorConditionFormula>
+        <errorDisplayField>LinkedUser__c</errorDisplayField>
+        <errorMessage>No se puede generar un empleado sin un usuario vinculado</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>LinkedUserNotChanged</fullName>
@@ -408,13 +476,13 @@ MonthlyWage__c/28)</formula>
     <validationRules>
         <fullName>SameEmailAsUser</fullName>
         <active>true</active>
-        <errorConditionFormula>EmployeeEmail__c  &lt;&gt;  LinkedUser__r.Email</errorConditionFormula>
+        <errorConditionFormula>EmployeeEmail__c  &lt;&gt;  LinkedUser__r.Email &amp;&amp;  LinkedUser__r.Profile.Name != &apos;GodBigFriendlyBrother&apos;</errorConditionFormula>
         <errorDisplayField>EmployeeEmail__c</errorDisplayField>
         <errorMessage>El email del empleado no puede ser distinto del de su usuario vinculado</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>SameMobileAsUser</fullName>
-        <active>true</active>
+        <active>false</active>
         <errorConditionFormula>MobilePhone__c  &lt;&gt; LinkedUser__r.MobilePhone</errorConditionFormula>
         <errorMessage>El teléfono del empleado debe ser igual al del usuario al que está vinculado</errorMessage>
     </validationRules>
