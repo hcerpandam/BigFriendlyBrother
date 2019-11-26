@@ -198,24 +198,10 @@
         <type>Time</type>
     </fields>
     <fields>
-        <fullName>RelatedEmployee__c</fullName>
-        <externalId>false</externalId>
-        <label>Empleado vinculado</label>
-        <referenceTo>Employee__c</referenceTo>
-        <relationshipLabel>Horario de empleados</relationshipLabel>
-        <relationshipName>HorariosDeEmpleado</relationshipName>
-        <relationshipOrder>0</relationshipOrder>
-        <reparentableMasterDetail>true</reparentableMasterDetail>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>MasterDetail</type>
-        <writeRequiresMasterRead>false</writeRequiresMasterRead>
-    </fields>
-    <fields>
         <fullName>SaturdayEndTime__c</fullName>
         <externalId>false</externalId>
         <label>Sábado: Hora de salida</label>
-        <required>true</required>
+        <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Time</type>
@@ -224,7 +210,7 @@
         <fullName>SaturdayStartTime__c</fullName>
         <externalId>false</externalId>
         <label>Sábado: Hora de entrada</label>
-        <required>true</required>
+        <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Time</type>
@@ -242,7 +228,7 @@
         <fullName>SundayEndTime__c</fullName>
         <externalId>false</externalId>
         <label>Domingo: Hora de salida</label>
-        <required>true</required>
+        <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Time</type>
@@ -250,8 +236,8 @@
     <fields>
         <fullName>SundayStartTime__c</fullName>
         <externalId>false</externalId>
-        <label>Domingo: Fecha de entrada</label>
-        <required>true</required>
+        <label>Domingo: Hora de entrada</label>
+        <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Time</type>
@@ -317,13 +303,13 @@
         <label>All</label>
     </listViews>
     <nameField>
-        <displayFormat>EBS-{0000}</displayFormat>
-        <label>Name</label>
+        <displayFormat>HE-{0000}</displayFormat>
+        <label>Número de horario</label>
         <trackHistory>false</trackHistory>
         <type>AutoNumber</type>
     </nameField>
     <pluralLabel>Horario de empleados</pluralLabel>
     <searchLayouts/>
-    <sharingModel>ControlledByParent</sharingModel>
+    <sharingModel>ReadWrite</sharingModel>
     <visibility>Public</visibility>
 </CustomObject>

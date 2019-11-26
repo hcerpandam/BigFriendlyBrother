@@ -19,7 +19,8 @@
     <tabs>EmployeeBusinessHours__c</tabs>
     <tabs>PersonalAbsences__c</tabs>
     <tabs>Headquarters__c</tabs>
-    <tabs>TimeRecordControll__c</tabs>
+    <tabs>TimeRecordControl__c</tabs>
+    <tabs>MonthlyTimeRecordControl__c</tabs>
     <uiType>Lightning</uiType>
     <utilityBar>Big_Friendly_Brother_UtilityBar</utilityBar>
 </CustomApplication>

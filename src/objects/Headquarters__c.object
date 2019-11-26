@@ -170,7 +170,7 @@
         <label>All</label>
     </listViews>
     <nameField>
-        <label>Name</label>
+        <label>Nombre de la sede</label>
         <trackHistory>false</trackHistory>
         <type>Text</type>
     </nameField>

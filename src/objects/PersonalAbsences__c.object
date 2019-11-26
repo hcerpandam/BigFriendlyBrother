@@ -156,10 +156,10 @@
         <fullName>AbsenceEnd__c</fullName>
         <externalId>false</externalId>
         <label>Fin del permiso</label>
-        <required>true</required>
+        <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
-        <type>DateTime</type>
+        <type>Date</type>
     </fields>
     <fields>
         <fullName>AbsenceReason__c</fullName>
@@ -248,16 +248,6 @@
                     <default>false</default>
                     <label>Fallecimiento/Enfermedad hasta segundo grado</label>
                 </value>
-                <value>
-                    <fullName>Apagón eléctrico</fullName>
-                    <default>false</default>
-                    <label>Apagón eléctrico</label>
-                </value>
-                <value>
-                    <fullName>Incidencia dispositivo informático</fullName>
-                    <default>false</default>
-                    <label>Incidencia dispositivo informático</label>
-                </value>
             </valueSetDefinition>
         </valueSet>
     </fields>
@@ -265,24 +255,49 @@
         <fullName>AbsenceStart__c</fullName>
         <externalId>false</externalId>
         <label>Inicio del permiso</label>
-        <required>true</required>
+        <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
-        <type>DateTime</type>
+        <type>Date</type>
     </fields>
     <fields>
-        <fullName>LinkedEmployee__c</fullName>
+        <fullName>Aprobada_por_Recursos_Humanos__c</fullName>
+        <defaultValue>false</defaultValue>
         <externalId>false</externalId>
-        <label>Empleado vinculado</label>
-        <referenceTo>Employee__c</referenceTo>
-        <relationshipLabel>Ausencias</relationshipLabel>
-        <relationshipName>Ausencias</relationshipName>
-        <relationshipOrder>0</relationshipOrder>
-        <reparentableMasterDetail>true</reparentableMasterDetail>
+        <label>Aprobada por Recursos Humanos</label>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
-        <type>MasterDetail</type>
-        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>DailyAbsenceRange__c</fullName>
+        <externalId>false</externalId>
+        <formula>CASE( AbsenceReason__c ,
+&apos;Enfermedad laboral&apos;,9,
+&apos;Enfermedad no laboral&apos;,9,
+&apos;Fallecimiento/Enfermedad hasta segundo grado&apos;,9,
+&apos;Permiso maternidad/paternidad&apos;,9,
+&apos;Festivo&apos;,9,
+&apos;Elecciones sindicales&apos;,4,
+&apos;Comité de empresa, seguridad y salud&apos;,4,
+&apos;Deber de carácter público&apos;,9,
+&apos;Matrimonio&apos;,9,
+&apos;Traslado de domicilio habitual&apos;,9,
+&apos;Vacaciones&apos;,9,
+&apos;Formación (instructor)&apos;,9,
+&apos;Formación (alumno)&apos;,9,
+&apos;Evaluación (evaluador)&apos;,1,
+&apos;Evaluación (evaluado)&apos;,1,
+0)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Duración de la ausencia</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
     </fields>
     <label>Ausencia</label>
     <listViews>
@@ -292,12 +307,12 @@
     </listViews>
     <nameField>
         <displayFormat>AUS-{00000}</displayFormat>
-        <label>Name</label>
+        <label>Número de ausencia</label>
         <trackHistory>false</trackHistory>
         <type>AutoNumber</type>
     </nameField>
     <pluralLabel>Ausencias</pluralLabel>
     <searchLayouts/>
-    <sharingModel>ControlledByParent</sharingModel>
+    <sharingModel>ReadWrite</sharingModel>
     <visibility>Public</visibility>
 </CustomObject>

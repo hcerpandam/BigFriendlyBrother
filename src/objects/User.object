@@ -200,6 +200,35 @@
     <enableFeeds>true</enableFeeds>
     <externalSharingModel>Private</externalSharingModel>
     <fields>
+        <fullName>IsEmployeeType__c</fullName>
+        <externalId>false</externalId>
+        <label>Es empleado</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>No</fullName>
+                    <default>true</default>
+                    <label>No</label>
+                </value>
+                <value>
+                    <fullName>Empleado</fullName>
+                    <default>false</default>
+                    <label>Empleado</label>
+                </value>
+                <value>
+                    <fullName>Recursos Humanos</fullName>
+                    <default>false</default>
+                    <label>Recursos Humanos</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
         <fullName>ManagerId</fullName>
         <trackFeedHistory>true</trackFeedHistory>
         <type>Hierarchy</type>
