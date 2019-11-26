@@ -84,7 +84,6 @@ public with sharing class TriggerFactory {
 	/**
 	 * private static method to get the appropriate handler for the object type.
 	 * Modify this method to add any additional handlers.
-	 * https://debugonweb.com/2019/01/27/trigger-factory-salesforce/
 	 * Arguments:	Schema.sObjectType soType - Object type tolocate (SObject.sObjectType)
 	 * Returns:		ITrigger - A trigger handler if one exists or null.
 	 */
@@ -95,14 +94,6 @@ public with sharing class TriggerFactory {
         
 		if (soType == Employee__c.sObjectType) {
 			return new EmployeeTriggerHandler();
-		}
-
-		if (soType == Address.sObjectType) {
-			return new AddressTriggerHandler();
-		}
-
-		if (soType == BusinessHours.sObjectType) {
-			return new BusinessHoursTriggerHandler();
 		}
 
         if (soType == EmployeeBusinessHours__c.sObjectType) {
