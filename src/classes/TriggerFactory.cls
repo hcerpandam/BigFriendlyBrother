@@ -89,6 +89,10 @@ public with sharing class TriggerFactory {
 	 */
 	private static ITrigger getHandler(Schema.sObjectType soType) {
         
+		if (soType == User.sObjectType) {
+			return new UserTriggerHandler();
+		}
+		
 		if (soType == Employee__c.sObjectType) {
 			return new EmployeeTriggerHandler();
 		}

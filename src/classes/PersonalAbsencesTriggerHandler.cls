@@ -6,8 +6,11 @@
 public with sharing class PersonalAbsencesTriggerHandler implements ITrigger {
 
     // Var declaration
+    private static User u = [SELECT Id, UserRole.Name FROM User WHERE Id = : UserInfo.getUserId()]; // User executing code
+    private static List<String> lstabsenceCausesByHHHRR = new List<String>{'Fallecimiento/Enfermedad hasta segundo grado','Enfermedad laboral','Enfermedad no laboral'};
 
     // Constant declaration
+    private final static String HHRR_ROLE_NAME = 'Técnico en Recursos Humanos';
 
     // Builder
 
@@ -18,15 +21,54 @@ public with sharing class PersonalAbsencesTriggerHandler implements ITrigger {
     * Use this to cache any data required into maps prior execution of the trigger.
     */
     public void bulkBefore() {
-
+        
     }
 
-    public void beforeInsert(SObject sObj) {  
+    public void beforeInsert(SObject sObj) { 
 
+        PersonalAbsences__c instance = (PersonalAbsences__c)sObj;
+        String strErrorMsg = null;
+
+        if(u.UserRole.Name!=HHRR_ROLE_NAME){
+            if(!String.isBlank((String.valueOf(instance.AbsenceReason__c)))){
+                if(!lstabsenceCausesByHHHRR.contains(String.valueOf(instance.AbsenceReason__c))){
+                    strErrorMsg = 'Solo Recursos Humanos puede marcar esta causa de justificación';
+                }
+            }
+        }else if(!String.isBlank(String.valueOf(instance.AbsenceReason__c)) && (!String.isBlank(String.valueOf(instance.AbsenceStart__c)) || !String.isBlank(String.valueOf(instance.AbsenceEnd__c)))){
+            if((String.valueOf(instance.AbsenceReason__c))!='Vacaciones' && (lstabsenceCausesByHHHRR.contains(instance.AbsenceReason__c) || 
+                lstabsenceCausesByHHHRR.contains(instance.AbsenceReason__c))){
+                strErrorMsg = 'Los plazos de inicio y fin son inalterables';
+            }
+        }
+        if(!String.isBlank(strErrorMsg)){
+            instance.addError(strErrorMsg);
+        }
     }
 
     public void beforeUpdate(SObject oldSobj, SObject sObj) {
-        
+
+        PersonalAbsences__c oldInstance = (PersonalAbsences__c)oldSobj;
+        PersonalAbsences__c newInstance = (PersonalAbsences__c)sObj;
+
+        String strErrorMsg = null;
+
+        if(u.UserRole.Name!=HHRR_ROLE_NAME){
+            if(newInstance.AbsenceReason__c!=oldInstance.AbsenceReason__c){
+                if(!lstabsenceCausesByHHHRR.contains(String.valueOf(newInstance.AbsenceReason__c))){
+                    strErrorMsg = 'Solo Recursos Humanos puede marcar esta causa de justificación';
+                }
+            }
+        }else if((newInstance.AbsenceStart__c!=oldInstance.AbsenceStart__c) || (newInstance.AbsenceEnd__c!=oldInstance.AbsenceEnd__c)){
+            if((String.valueOf(newInstance.AbsenceReason__c))!='Vacaciones' && (lstabsenceCausesByHHHRR.contains(newInstance.AbsenceReason__c) || 
+                lstabsenceCausesByHHHRR.contains(oldInstance.AbsenceReason__c))){
+                strErrorMsg = 'Los plazos de inicio y fin son inalterables';
+            }
+        }
+        if(!String.isBlank(strErrorMsg)){
+            newInstance.addError(strErrorMsg);
+        }
+ 
     }
 
     public void beforeDelete(SObject sObj) {
