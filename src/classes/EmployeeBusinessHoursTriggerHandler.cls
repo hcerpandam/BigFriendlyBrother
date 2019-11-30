@@ -18,7 +18,24 @@ public with sharing class EmployeeBusinessHoursTriggerHandler implements ITrigge
     * Use this to cache any data required into maps prior execution of the trigger.
     */
     public void bulkBefore() {
+        List<EmployeeBusinessHours__c> lstEmpBusHrs = (List<EmployeeBusinessHours__c>)Trigger.new;
 
+        if(Trigger.isInsert || Trigger.isUpdate){
+            for(EmployeeBusinessHours__c empBusHrs: lstEmpBusHrs){
+                String strErrorMsg = null;
+
+                if(empBusHrs.StartTime__c!=null && empBusHrs.EndTime__c!=null){
+                    if(empBusHrs.StartTime__c<empBusHrs.EndTime__c){
+                        strErrorMsg = 'La hora de salida no puede ser anterior a la de entrada';
+                    }
+                }
+
+                if(!String.isBlank(strErrorMsg)){
+                    empBusHrs.addError(strErrorMsg);
+                }
+            }
+        }
+        
     }
 
     public void beforeInsert(SObject sObj) {  

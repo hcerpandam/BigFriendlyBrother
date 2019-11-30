@@ -10,7 +10,7 @@ public with sharing class PersonalAbsencesTriggerHandler implements ITrigger {
     private static List<String> lstabsenceCausesByHHHRR = new List<String>{'Fallecimiento/Enfermedad hasta segundo grado','Enfermedad laboral','Enfermedad no laboral'};
 
     // Constant declaration
-    private final static String HHRR_ROLE_NAME = 'Técnico en Recursos Humanos';
+    private final static String HHRR_ROLE_NAME = 'THumanResources';
 
     // Builder
 
