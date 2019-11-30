@@ -27,8 +27,6 @@ public with sharing class UserTriggerHandler implements ITrigger{
 
         if(String.isBlank(String.valueOf(u.MobilePhone))){
             strErrorMsg = 'El móvil del usuario es un campo obligatorio';
-        }else if(validateMobilePhone(String.valueOf(u.MobilePhone))==false){
-            strErrorMsg = 'El teléfono móvil no es válido';
         }
         if(!String.isBlank(strErrorMsg)){
             u.addError(strErrorMsg);
@@ -36,17 +34,7 @@ public with sharing class UserTriggerHandler implements ITrigger{
     }
 
     public void beforeUpdate(SObject oldSobj, SObject sObj) {
-        User newU = (User)sObj;
-        User oldU = (User)oldSobj;
 
-        String strErrorMsg = null;
-
-        if(newU.MobilePhone!=oldU.MobilePhone){
-            if(validateMobilePhone(String.valueOf(newU.MobilePhone))==false){
-                strErrorMsg = 'El teléfono móvil no es válido';
-                newU.addError(strErrorMsg);
-            }
-        }
     }
 
     public void beforeDelete(SObject sObj) {
@@ -80,13 +68,5 @@ public with sharing class UserTriggerHandler implements ITrigger{
     }
 
     // Other methods
-
-    private static boolean validateMobilePhone(String phoneNum){
-        
-        String strRegex = '(0034|\\+34)?(\\d\\d\\d)-? ?(\\d\\d)-? ?(\\d)-? ?(\\d)-? ?(\\d\\d)';
-        boolean proceed = Pattern.matches(strRegex,phoneNum);
-
-        return proceed;
-    }
     
 }
