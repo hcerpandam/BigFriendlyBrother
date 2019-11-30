@@ -9,14 +9,6 @@
     </userPermissions>
     <userPermissions>
         <enabled>true</enabled>
-        <name>ActivateContract</name>
-    </userPermissions>
-    <userPermissions>
-        <enabled>true</enabled>
-        <name>ActivateOrder</name>
-    </userPermissions>
-    <userPermissions>
-        <enabled>true</enabled>
         <name>ActivitiesAccess</name>
     </userPermissions>
     <userPermissions>
@@ -181,10 +173,6 @@
     </userPermissions>
     <userPermissions>
         <enabled>true</enabled>
-        <name>CreatePackaging</name>
-    </userPermissions>
-    <userPermissions>
-        <enabled>true</enabled>
         <name>CreateReportFolders</name>
     </userPermissions>
     <userPermissions>
@@ -221,19 +209,11 @@
     </userPermissions>
     <userPermissions>
         <enabled>true</enabled>
-        <name>DeleteActivatedContract</name>
-    </userPermissions>
-    <userPermissions>
-        <enabled>true</enabled>
         <name>DeleteTopics</name>
     </userPermissions>
     <userPermissions>
         <enabled>true</enabled>
         <name>DistributeFromPersWksp</name>
-    </userPermissions>
-    <userPermissions>
-        <enabled>true</enabled>
-        <name>EditActivatedOrders</name>
     </userPermissions>
     <userPermissions>
         <enabled>true</enabled>
@@ -245,15 +225,7 @@
     </userPermissions>
     <userPermissions>
         <enabled>true</enabled>
-        <name>EditCaseComments</name>
-    </userPermissions>
-    <userPermissions>
-        <enabled>true</enabled>
         <name>EditEvent</name>
-    </userPermissions>
-    <userPermissions>
-        <enabled>true</enabled>
-        <name>EditHtmlTemplates</name>
     </userPermissions>
     <userPermissions>
         <enabled>true</enabled>
@@ -345,14 +317,6 @@
     </userPermissions>
     <userPermissions>
         <enabled>true</enabled>
-        <name>ImportPersonal</name>
-    </userPermissions>
-    <userPermissions>
-        <enabled>true</enabled>
-        <name>InstallPackaging</name>
-    </userPermissions>
-    <userPermissions>
-        <enabled>true</enabled>
         <name>LightningConsoleAllowedForUser</name>
     </userPermissions>
     <userPermissions>
@@ -382,10 +346,6 @@
     <userPermissions>
         <enabled>true</enabled>
         <name>ManageCallCenters</name>
-    </userPermissions>
-    <userPermissions>
-        <enabled>true</enabled>
-        <name>ManageCases</name>
     </userPermissions>
     <userPermissions>
         <enabled>true</enabled>
@@ -477,10 +437,6 @@
     </userPermissions>
     <userPermissions>
         <enabled>true</enabled>
-        <name>ManageLeads</name>
-    </userPermissions>
-    <userPermissions>
-        <enabled>true</enabled>
         <name>ManageLoginAccessPolicies</name>
     </userPermissions>
     <userPermissions>
@@ -538,10 +494,6 @@
     <userPermissions>
         <enabled>true</enabled>
         <name>ManageSharing</name>
-    </userPermissions>
-    <userPermissions>
-        <enabled>true</enabled>
-        <name>ManageSolutions</name>
     </userPermissions>
     <userPermissions>
         <enabled>true</enabled>
@@ -610,14 +562,6 @@
     <userPermissions>
         <enabled>true</enabled>
         <name>PrivacyDataAccess</name>
-    </userPermissions>
-    <userPermissions>
-        <enabled>true</enabled>
-        <name>PublishPackaging</name>
-    </userPermissions>
-    <userPermissions>
-        <enabled>true</enabled>
-        <name>QueryAllFiles</name>
     </userPermissions>
     <userPermissions>
         <enabled>true</enabled>
@@ -706,10 +650,6 @@
     <userPermissions>
         <enabled>true</enabled>
         <name>TransactionalEmailSend</name>
-    </userPermissions>
-    <userPermissions>
-        <enabled>true</enabled>
-        <name>TransferAnyCase</name>
     </userPermissions>
     <userPermissions>
         <enabled>true</enabled>

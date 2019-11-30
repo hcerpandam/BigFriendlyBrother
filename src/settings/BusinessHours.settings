@@ -1,6 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <BusinessHoursSettings xmlns="http://soap.sforce.com/2006/04/metadata">
     <businessHours>
+        <active>true</active>
+        <default>false</default>
+        <fridayEndTime>00:00:00.000Z</fridayEndTime>
+        <fridayStartTime>07:00:00.000Z</fridayStartTime>
+        <mondayEndTime>00:00:00.000Z</mondayEndTime>
+        <mondayStartTime>07:00:00.000Z</mondayStartTime>
+        <name>Barcelona</name>
+        <thursdayEndTime>00:00:00.000Z</thursdayEndTime>
+        <thursdayStartTime>07:00:00.000Z</thursdayStartTime>
+        <timeZoneId>Africa/Casablanca</timeZoneId>
+        <tuesdayEndTime>00:00:00.000Z</tuesdayEndTime>
+        <tuesdayStartTime>07:00:00.000Z</tuesdayStartTime>
+        <wednesdayEndTime>00:00:00.000Z</wednesdayEndTime>
+        <wednesdayStartTime>07:00:00.000Z</wednesdayStartTime>
+    </businessHours>
+    <businessHours>
+        <active>true</active>
+        <default>false</default>
+        <fridayEndTime>00:00:00.000Z</fridayEndTime>
+        <fridayStartTime>07:00:00.000Z</fridayStartTime>
+        <mondayEndTime>00:00:00.000Z</mondayEndTime>
+        <mondayStartTime>07:00:00.000Z</mondayStartTime>
+        <name>Bilbao</name>
+        <thursdayEndTime>00:00:00.000Z</thursdayEndTime>
+        <thursdayStartTime>07:00:00.000Z</thursdayStartTime>
+        <timeZoneId>Africa/Casablanca</timeZoneId>
+        <tuesdayEndTime>00:00:00.000Z</tuesdayEndTime>
+        <tuesdayStartTime>07:00:00.000Z</tuesdayStartTime>
+        <wednesdayEndTime>00:00:00.000Z</wednesdayEndTime>
+        <wednesdayStartTime>07:00:00.000Z</wednesdayStartTime>
+    </businessHours>
+    <businessHours>
         <active>false</active>
         <default>false</default>
         <fridayEndTime>00:00:00.000Z</fridayEndTime>
@@ -22,148 +54,92 @@
     </businessHours>
     <businessHours>
         <active>true</active>
-        <default>false</default>
-        <fridayEndTime>00:00:00.000Z</fridayEndTime>
-        <fridayStartTime>00:00:00.000Z</fridayStartTime>
-        <mondayEndTime>00:00:00.000Z</mondayEndTime>
-        <mondayStartTime>00:00:00.000Z</mondayStartTime>
-        <name>Spain: Barcelona</name>
-        <saturdayEndTime>00:00:00.000Z</saturdayEndTime>
-        <saturdayStartTime>00:00:00.000Z</saturdayStartTime>
-        <sundayEndTime>00:00:00.000Z</sundayEndTime>
-        <sundayStartTime>00:00:00.000Z</sundayStartTime>
-        <thursdayEndTime>00:00:00.000Z</thursdayEndTime>
-        <thursdayStartTime>00:00:00.000Z</thursdayStartTime>
-        <timeZoneId>Africa/Casablanca</timeZoneId>
-        <tuesdayEndTime>00:00:00.000Z</tuesdayEndTime>
-        <tuesdayStartTime>00:00:00.000Z</tuesdayStartTime>
-        <wednesdayEndTime>00:00:00.000Z</wednesdayEndTime>
-        <wednesdayStartTime>00:00:00.000Z</wednesdayStartTime>
-    </businessHours>
-    <businessHours>
-        <active>true</active>
-        <default>false</default>
-        <fridayEndTime>00:00:00.000Z</fridayEndTime>
-        <fridayStartTime>00:00:00.000Z</fridayStartTime>
-        <mondayEndTime>00:00:00.000Z</mondayEndTime>
-        <mondayStartTime>00:00:00.000Z</mondayStartTime>
-        <name>Spain: Bilbao</name>
-        <saturdayEndTime>00:00:00.000Z</saturdayEndTime>
-        <saturdayStartTime>00:00:00.000Z</saturdayStartTime>
-        <sundayEndTime>00:00:00.000Z</sundayEndTime>
-        <sundayStartTime>00:00:00.000Z</sundayStartTime>
-        <thursdayEndTime>00:00:00.000Z</thursdayEndTime>
-        <thursdayStartTime>00:00:00.000Z</thursdayStartTime>
-        <timeZoneId>Africa/Casablanca</timeZoneId>
-        <tuesdayEndTime>00:00:00.000Z</tuesdayEndTime>
-        <tuesdayStartTime>00:00:00.000Z</tuesdayStartTime>
-        <wednesdayEndTime>00:00:00.000Z</wednesdayEndTime>
-        <wednesdayStartTime>00:00:00.000Z</wednesdayStartTime>
-    </businessHours>
-    <businessHours>
-        <active>true</active>
-        <default>false</default>
-        <fridayEndTime>00:00:00.000Z</fridayEndTime>
-        <fridayStartTime>00:00:00.000Z</fridayStartTime>
-        <mondayEndTime>00:00:00.000Z</mondayEndTime>
-        <mondayStartTime>00:00:00.000Z</mondayStartTime>
-        <name>Spain: Madrid</name>
-        <saturdayEndTime>00:00:00.000Z</saturdayEndTime>
-        <saturdayStartTime>00:00:00.000Z</saturdayStartTime>
-        <sundayEndTime>00:00:00.000Z</sundayEndTime>
-        <sundayStartTime>00:00:00.000Z</sundayStartTime>
-        <thursdayEndTime>00:00:00.000Z</thursdayEndTime>
-        <thursdayStartTime>00:00:00.000Z</thursdayStartTime>
-        <timeZoneId>Africa/Casablanca</timeZoneId>
-        <tuesdayEndTime>00:00:00.000Z</tuesdayEndTime>
-        <tuesdayStartTime>00:00:00.000Z</tuesdayStartTime>
-        <wednesdayEndTime>00:00:00.000Z</wednesdayEndTime>
-        <wednesdayStartTime>00:00:00.000Z</wednesdayStartTime>
-    </businessHours>
-    <businessHours>
-        <active>true</active>
-        <default>false</default>
-        <fridayEndTime>00:00:00.000Z</fridayEndTime>
-        <fridayStartTime>00:00:00.000Z</fridayStartTime>
-        <mondayEndTime>00:00:00.000Z</mondayEndTime>
-        <mondayStartTime>00:00:00.000Z</mondayStartTime>
-        <name>Spain: Málaga</name>
-        <saturdayEndTime>00:00:00.000Z</saturdayEndTime>
-        <saturdayStartTime>00:00:00.000Z</saturdayStartTime>
-        <sundayEndTime>00:00:00.000Z</sundayEndTime>
-        <sundayStartTime>00:00:00.000Z</sundayStartTime>
-        <thursdayEndTime>00:00:00.000Z</thursdayEndTime>
-        <thursdayStartTime>00:00:00.000Z</thursdayStartTime>
-        <timeZoneId>Africa/Casablanca</timeZoneId>
-        <tuesdayEndTime>00:00:00.000Z</tuesdayEndTime>
-        <tuesdayStartTime>00:00:00.000Z</tuesdayStartTime>
-        <wednesdayEndTime>00:00:00.000Z</wednesdayEndTime>
-        <wednesdayStartTime>00:00:00.000Z</wednesdayStartTime>
-    </businessHours>
-    <businessHours>
-        <active>true</active>
         <default>true</default>
-        <fridayEndTime>22:00:00.000Z</fridayEndTime>
+        <fridayEndTime>00:00:00.000Z</fridayEndTime>
         <fridayStartTime>07:00:00.000Z</fridayStartTime>
-        <mondayEndTime>22:00:00.000Z</mondayEndTime>
+        <mondayEndTime>00:00:00.000Z</mondayEndTime>
         <mondayStartTime>07:00:00.000Z</mondayStartTime>
-        <name>Spain: National (Open office)</name>
-        <thursdayEndTime>22:00:00.000Z</thursdayEndTime>
+        <name>España</name>
+        <thursdayEndTime>00:00:00.000Z</thursdayEndTime>
         <thursdayStartTime>07:00:00.000Z</thursdayStartTime>
         <timeZoneId>Africa/Casablanca</timeZoneId>
-        <tuesdayEndTime>22:00:00.000Z</tuesdayEndTime>
+        <tuesdayEndTime>00:00:00.000Z</tuesdayEndTime>
         <tuesdayStartTime>07:00:00.000Z</tuesdayStartTime>
-        <wednesdayEndTime>22:00:00.000Z</wednesdayEndTime>
+        <wednesdayEndTime>00:00:00.000Z</wednesdayEndTime>
         <wednesdayStartTime>07:00:00.000Z</wednesdayStartTime>
     </businessHours>
     <businessHours>
         <active>true</active>
         <default>false</default>
         <fridayEndTime>00:00:00.000Z</fridayEndTime>
-        <fridayStartTime>00:00:00.000Z</fridayStartTime>
+        <fridayStartTime>07:00:00.000Z</fridayStartTime>
         <mondayEndTime>00:00:00.000Z</mondayEndTime>
-        <mondayStartTime>00:00:00.000Z</mondayStartTime>
-        <name>Spain: Sevilla</name>
-        <saturdayEndTime>00:00:00.000Z</saturdayEndTime>
-        <saturdayStartTime>00:00:00.000Z</saturdayStartTime>
-        <sundayEndTime>00:00:00.000Z</sundayEndTime>
-        <sundayStartTime>00:00:00.000Z</sundayStartTime>
+        <mondayStartTime>07:00:00.000Z</mondayStartTime>
+        <name>Madrid</name>
         <thursdayEndTime>00:00:00.000Z</thursdayEndTime>
-        <thursdayStartTime>00:00:00.000Z</thursdayStartTime>
+        <thursdayStartTime>07:00:00.000Z</thursdayStartTime>
         <timeZoneId>Africa/Casablanca</timeZoneId>
         <tuesdayEndTime>00:00:00.000Z</tuesdayEndTime>
-        <tuesdayStartTime>00:00:00.000Z</tuesdayStartTime>
+        <tuesdayStartTime>07:00:00.000Z</tuesdayStartTime>
         <wednesdayEndTime>00:00:00.000Z</wednesdayEndTime>
-        <wednesdayStartTime>00:00:00.000Z</wednesdayStartTime>
+        <wednesdayStartTime>07:00:00.000Z</wednesdayStartTime>
     </businessHours>
     <businessHours>
         <active>true</active>
         <default>false</default>
         <fridayEndTime>00:00:00.000Z</fridayEndTime>
-        <fridayStartTime>00:00:00.000Z</fridayStartTime>
+        <fridayStartTime>07:00:00.000Z</fridayStartTime>
         <mondayEndTime>00:00:00.000Z</mondayEndTime>
-        <mondayStartTime>00:00:00.000Z</mondayStartTime>
-        <name>Spain: Valencia</name>
-        <saturdayEndTime>00:00:00.000Z</saturdayEndTime>
-        <saturdayStartTime>00:00:00.000Z</saturdayStartTime>
-        <sundayEndTime>00:00:00.000Z</sundayEndTime>
-        <sundayStartTime>00:00:00.000Z</sundayStartTime>
+        <mondayStartTime>07:00:00.000Z</mondayStartTime>
+        <name>Málaga</name>
         <thursdayEndTime>00:00:00.000Z</thursdayEndTime>
-        <thursdayStartTime>00:00:00.000Z</thursdayStartTime>
+        <thursdayStartTime>07:00:00.000Z</thursdayStartTime>
         <timeZoneId>Africa/Casablanca</timeZoneId>
         <tuesdayEndTime>00:00:00.000Z</tuesdayEndTime>
-        <tuesdayStartTime>00:00:00.000Z</tuesdayStartTime>
+        <tuesdayStartTime>07:00:00.000Z</tuesdayStartTime>
         <wednesdayEndTime>00:00:00.000Z</wednesdayEndTime>
-        <wednesdayStartTime>00:00:00.000Z</wednesdayStartTime>
+        <wednesdayStartTime>07:00:00.000Z</wednesdayStartTime>
+    </businessHours>
+    <businessHours>
+        <active>true</active>
+        <default>false</default>
+        <fridayEndTime>00:00:00.000Z</fridayEndTime>
+        <fridayStartTime>07:00:00.000Z</fridayStartTime>
+        <mondayEndTime>00:00:00.000Z</mondayEndTime>
+        <mondayStartTime>07:00:00.000Z</mondayStartTime>
+        <name>Sevilla</name>
+        <thursdayEndTime>00:00:00.000Z</thursdayEndTime>
+        <thursdayStartTime>07:00:00.000Z</thursdayStartTime>
+        <timeZoneId>Africa/Casablanca</timeZoneId>
+        <tuesdayEndTime>00:00:00.000Z</tuesdayEndTime>
+        <tuesdayStartTime>07:00:00.000Z</tuesdayStartTime>
+        <wednesdayEndTime>00:00:00.000Z</wednesdayEndTime>
+        <wednesdayStartTime>07:00:00.000Z</wednesdayStartTime>
+    </businessHours>
+    <businessHours>
+        <active>true</active>
+        <default>false</default>
+        <fridayEndTime>00:00:00.000Z</fridayEndTime>
+        <fridayStartTime>07:00:00.000Z</fridayStartTime>
+        <mondayEndTime>00:00:00.000Z</mondayEndTime>
+        <mondayStartTime>07:00:00.000Z</mondayStartTime>
+        <name>Valencia</name>
+        <thursdayEndTime>00:00:00.000Z</thursdayEndTime>
+        <thursdayStartTime>07:00:00.000Z</thursdayStartTime>
+        <timeZoneId>Africa/Casablanca</timeZoneId>
+        <tuesdayEndTime>00:00:00.000Z</tuesdayEndTime>
+        <tuesdayStartTime>07:00:00.000Z</tuesdayStartTime>
+        <wednesdayEndTime>00:00:00.000Z</wednesdayEndTime>
+        <wednesdayStartTime>07:00:00.000Z</wednesdayStartTime>
     </businessHours>
     <holidays>
-        <businessHours>Spain: Barcelona</businessHours>
-        <businessHours>Spain: Bilbao</businessHours>
-        <businessHours>Spain: Madrid</businessHours>
-        <businessHours>Spain: Málaga</businessHours>
-        <businessHours>Spain: National (Open office)</businessHours>
-        <businessHours>Spain: Sevilla</businessHours>
-        <businessHours>Spain: Valencia</businessHours>
+        <businessHours>Barcelona</businessHours>
+        <businessHours>Bilbao</businessHours>
+        <businessHours>España</businessHours>
+        <businessHours>Madrid</businessHours>
+        <businessHours>Málaga</businessHours>
+        <businessHours>Sevilla</businessHours>
+        <businessHours>Valencia</businessHours>
         <isRecurring>true</isRecurring>
         <name>Asunción de la Virgen</name>
         <recurrenceDayOfMonth>15</recurrenceDayOfMonth>
@@ -172,13 +148,13 @@
         <recurrenceType>RecursYearly</recurrenceType>
     </holidays>
     <holidays>
-        <businessHours>Spain: Barcelona</businessHours>
-        <businessHours>Spain: Bilbao</businessHours>
-        <businessHours>Spain: Madrid</businessHours>
-        <businessHours>Spain: Málaga</businessHours>
-        <businessHours>Spain: National (Open office)</businessHours>
-        <businessHours>Spain: Sevilla</businessHours>
-        <businessHours>Spain: Valencia</businessHours>
+        <businessHours>Barcelona</businessHours>
+        <businessHours>Bilbao</businessHours>
+        <businessHours>España</businessHours>
+        <businessHours>Madrid</businessHours>
+        <businessHours>Málaga</businessHours>
+        <businessHours>Sevilla</businessHours>
+        <businessHours>Valencia</businessHours>
         <isRecurring>true</isRecurring>
         <name>Año nuevo</name>
         <recurrenceDayOfMonth>1</recurrenceDayOfMonth>
@@ -187,7 +163,7 @@
         <recurrenceType>RecursYearly</recurrenceType>
     </holidays>
     <holidays>
-        <businessHours>Spain: Sevilla</businessHours>
+        <businessHours>Sevilla</businessHours>
         <isRecurring>true</isRecurring>
         <name>Corpus Christi</name>
         <recurrenceDayOfMonth>20</recurrenceDayOfMonth>
@@ -196,7 +172,7 @@
         <recurrenceType>RecursYearly</recurrenceType>
     </holidays>
     <holidays>
-        <businessHours>Spain: Barcelona</businessHours>
+        <businessHours>Barcelona</businessHours>
         <isRecurring>true</isRecurring>
         <name>Diada de Catalunya</name>
         <recurrenceDayOfMonth>11</recurrenceDayOfMonth>
@@ -205,8 +181,8 @@
         <recurrenceType>RecursYearly</recurrenceType>
     </holidays>
     <holidays>
-        <businessHours>Spain: Málaga</businessHours>
-        <businessHours>Spain: Sevilla</businessHours>
+        <businessHours>Málaga</businessHours>
+        <businessHours>Sevilla</businessHours>
         <isRecurring>true</isRecurring>
         <name>Día de Andalucía</name>
         <recurrenceDayOfMonth>28</recurrenceDayOfMonth>
@@ -215,7 +191,7 @@
         <recurrenceType>RecursYearly</recurrenceType>
     </holidays>
     <holidays>
-        <businessHours>Spain: Madrid</businessHours>
+        <businessHours>Madrid</businessHours>
         <isRecurring>true</isRecurring>
         <name>Día de la Comunidad de Madrid</name>
         <recurrenceDayOfMonth>2</recurrenceDayOfMonth>
@@ -224,7 +200,7 @@
         <recurrenceType>RecursYearly</recurrenceType>
     </holidays>
     <holidays>
-        <businessHours>Spain: Valencia</businessHours>
+        <businessHours>Valencia</businessHours>
         <isRecurring>true</isRecurring>
         <name>Día de la Comunitat Valenciana</name>
         <recurrenceDayOfMonth>9</recurrenceDayOfMonth>
@@ -233,13 +209,13 @@
         <recurrenceType>RecursYearly</recurrenceType>
     </holidays>
     <holidays>
-        <businessHours>Spain: Barcelona</businessHours>
-        <businessHours>Spain: Bilbao</businessHours>
-        <businessHours>Spain: Madrid</businessHours>
-        <businessHours>Spain: Málaga</businessHours>
-        <businessHours>Spain: National (Open office)</businessHours>
-        <businessHours>Spain: Sevilla</businessHours>
-        <businessHours>Spain: Valencia</businessHours>
+        <businessHours>Barcelona</businessHours>
+        <businessHours>Bilbao</businessHours>
+        <businessHours>España</businessHours>
+        <businessHours>Madrid</businessHours>
+        <businessHours>Málaga</businessHours>
+        <businessHours>Sevilla</businessHours>
+        <businessHours>Valencia</businessHours>
         <isRecurring>true</isRecurring>
         <name>Día de la Constitución Española</name>
         <recurrenceDayOfMonth>6</recurrenceDayOfMonth>
@@ -248,13 +224,13 @@
         <recurrenceType>RecursYearly</recurrenceType>
     </holidays>
     <holidays>
-        <businessHours>Spain: Barcelona</businessHours>
-        <businessHours>Spain: Bilbao</businessHours>
-        <businessHours>Spain: Madrid</businessHours>
-        <businessHours>Spain: Málaga</businessHours>
-        <businessHours>Spain: National (Open office)</businessHours>
-        <businessHours>Spain: Sevilla</businessHours>
-        <businessHours>Spain: Valencia</businessHours>
+        <businessHours>Barcelona</businessHours>
+        <businessHours>Bilbao</businessHours>
+        <businessHours>España</businessHours>
+        <businessHours>Madrid</businessHours>
+        <businessHours>Málaga</businessHours>
+        <businessHours>Sevilla</businessHours>
+        <businessHours>Valencia</businessHours>
         <isRecurring>true</isRecurring>
         <name>Día del Trabajador</name>
         <recurrenceDayOfWeek>Sunday</recurrenceDayOfWeek>
@@ -270,8 +246,8 @@
         <recurrenceType>RecursYearlyNth</recurrenceType>
     </holidays>
     <holidays>
-        <businessHours>Spain: Madrid</businessHours>
-        <businessHours>Spain: Sevilla</businessHours>
+        <businessHours>Madrid</businessHours>
+        <businessHours>Sevilla</businessHours>
         <isRecurring>true</isRecurring>
         <name>Epifanía del Señor</name>
         <recurrenceDayOfMonth>6</recurrenceDayOfMonth>
@@ -280,13 +256,13 @@
         <recurrenceType>RecursYearly</recurrenceType>
     </holidays>
     <holidays>
-        <businessHours>Spain: Barcelona</businessHours>
-        <businessHours>Spain: Bilbao</businessHours>
-        <businessHours>Spain: Madrid</businessHours>
-        <businessHours>Spain: Málaga</businessHours>
-        <businessHours>Spain: National (Open office)</businessHours>
-        <businessHours>Spain: Sevilla</businessHours>
-        <businessHours>Spain: Valencia</businessHours>
+        <businessHours>Barcelona</businessHours>
+        <businessHours>Bilbao</businessHours>
+        <businessHours>España</businessHours>
+        <businessHours>Madrid</businessHours>
+        <businessHours>Málaga</businessHours>
+        <businessHours>Sevilla</businessHours>
+        <businessHours>Valencia</businessHours>
         <isRecurring>true</isRecurring>
         <name>Fiesta Nacional</name>
         <recurrenceDayOfMonth>12</recurrenceDayOfMonth>
@@ -295,9 +271,9 @@
         <recurrenceType>RecursYearly</recurrenceType>
     </holidays>
     <holidays>
-        <businessHours>Spain: Madrid</businessHours>
-        <businessHours>Spain: Málaga</businessHours>
-        <businessHours>Spain: Sevilla</businessHours>
+        <businessHours>Madrid</businessHours>
+        <businessHours>Málaga</businessHours>
+        <businessHours>Sevilla</businessHours>
         <isRecurring>true</isRecurring>
         <name>Inmaculada Concepción</name>
         <recurrenceDayOfMonth>8</recurrenceDayOfMonth>
@@ -306,9 +282,9 @@
         <recurrenceType>RecursYearly</recurrenceType>
     </holidays>
     <holidays>
-        <businessHours>Spain: Bilbao</businessHours>
-        <businessHours>Spain: Madrid</businessHours>
-        <businessHours>Spain: Sevilla</businessHours>
+        <businessHours>Bilbao</businessHours>
+        <businessHours>Madrid</businessHours>
+        <businessHours>Sevilla</businessHours>
         <isRecurring>true</isRecurring>
         <name>Jueves Santo</name>
         <recurrenceDayOfMonth>19</recurrenceDayOfMonth>
@@ -317,7 +293,7 @@
         <recurrenceType>RecursYearly</recurrenceType>
     </holidays>
     <holidays>
-        <businessHours>Spain: Barcelona</businessHours>
+        <businessHours>Barcelona</businessHours>
         <isRecurring>true</isRecurring>
         <name>La Mercé</name>
         <recurrenceDayOfMonth>24</recurrenceDayOfMonth>
@@ -326,8 +302,8 @@
         <recurrenceType>RecursYearly</recurrenceType>
     </holidays>
     <holidays>
-        <businessHours>Spain: Barcelona</businessHours>
-        <businessHours>Spain: Valencia</businessHours>
+        <businessHours>Barcelona</businessHours>
+        <businessHours>Valencia</businessHours>
         <isRecurring>true</isRecurring>
         <name>Lunes de Pascua</name>
         <recurrenceDayOfMonth>22</recurrenceDayOfMonth>
@@ -336,7 +312,7 @@
         <recurrenceType>RecursYearly</recurrenceType>
     </holidays>
     <holidays>
-        <businessHours>Spain: Sevilla</businessHours>
+        <businessHours>Sevilla</businessHours>
         <isRecurring>true</isRecurring>
         <name>Miércoles de Feria</name>
         <recurrenceDayOfMonth>8</recurrenceDayOfMonth>
@@ -345,13 +321,13 @@
         <recurrenceType>RecursYearly</recurrenceType>
     </holidays>
     <holidays>
-        <businessHours>Spain: Barcelona</businessHours>
-        <businessHours>Spain: Bilbao</businessHours>
-        <businessHours>Spain: Madrid</businessHours>
-        <businessHours>Spain: Málaga</businessHours>
-        <businessHours>Spain: National (Open office)</businessHours>
-        <businessHours>Spain: Sevilla</businessHours>
-        <businessHours>Spain: Valencia</businessHours>
+        <businessHours>Barcelona</businessHours>
+        <businessHours>Bilbao</businessHours>
+        <businessHours>España</businessHours>
+        <businessHours>Madrid</businessHours>
+        <businessHours>Málaga</businessHours>
+        <businessHours>Sevilla</businessHours>
+        <businessHours>Valencia</businessHours>
         <isRecurring>true</isRecurring>
         <name>Navidad</name>
         <recurrenceDayOfMonth>25</recurrenceDayOfMonth>
@@ -360,13 +336,16 @@
         <recurrenceType>RecursYearly</recurrenceType>
     </holidays>
     <holidays>
-        <activityDate>2019-11-09</activityDate>
-        <businessHours>Spain: Madrid</businessHours>
-        <isRecurring>false</isRecurring>
+        <businessHours>Madrid</businessHours>
+        <isRecurring>true</isRecurring>
         <name>Nuestra Señora de la Almudena</name>
+        <recurrenceDayOfMonth>9</recurrenceDayOfMonth>
+        <recurrenceMonthOfYear>November</recurrenceMonthOfYear>
+        <recurrenceStartDate>2019-11-09</recurrenceStartDate>
+        <recurrenceType>RecursYearly</recurrenceType>
     </holidays>
     <holidays>
-        <businessHours>Spain: Barcelona</businessHours>
+        <businessHours>Barcelona</businessHours>
         <isRecurring>true</isRecurring>
         <name>Pascua Granada</name>
         <recurrenceDayOfMonth>10</recurrenceDayOfMonth>
@@ -375,7 +354,7 @@
         <recurrenceType>RecursYearly</recurrenceType>
     </holidays>
     <holidays>
-        <businessHours>Spain: Bilbao</businessHours>
+        <businessHours>Bilbao</businessHours>
         <isRecurring>true</isRecurring>
         <name>San Ignacio de Loiola</name>
         <recurrenceDayOfMonth>31</recurrenceDayOfMonth>
@@ -384,7 +363,7 @@
         <recurrenceType>RecursYearly</recurrenceType>
     </holidays>
     <holidays>
-        <businessHours>Spain: Madrid</businessHours>
+        <businessHours>Madrid</businessHours>
         <isRecurring>true</isRecurring>
         <name>San Isidro</name>
         <recurrenceDayOfMonth>15</recurrenceDayOfMonth>
@@ -393,8 +372,8 @@
         <recurrenceType>RecursYearly</recurrenceType>
     </holidays>
     <holidays>
-        <businessHours>Spain: Bilbao</businessHours>
-        <businessHours>Spain: Valencia</businessHours>
+        <businessHours>Bilbao</businessHours>
+        <businessHours>Valencia</businessHours>
         <isRecurring>true</isRecurring>
         <name>San José</name>
         <recurrenceDayOfMonth>19</recurrenceDayOfMonth>
@@ -403,8 +382,8 @@
         <recurrenceType>RecursYearly</recurrenceType>
     </holidays>
     <holidays>
-        <businessHours>Spain: Barcelona</businessHours>
-        <businessHours>Spain: Valencia</businessHours>
+        <businessHours>Barcelona</businessHours>
+        <businessHours>Valencia</businessHours>
         <isRecurring>true</isRecurring>
         <name>San Juan</name>
         <recurrenceDayOfMonth>24</recurrenceDayOfMonth>
@@ -413,7 +392,7 @@
         <recurrenceType>RecursYearly</recurrenceType>
     </holidays>
     <holidays>
-        <businessHours>Spain: Valencia</businessHours>
+        <businessHours>Valencia</businessHours>
         <isRecurring>true</isRecurring>
         <name>San Vicente Ferrer</name>
         <recurrenceDayOfMonth>29</recurrenceDayOfMonth>
@@ -422,7 +401,7 @@
         <recurrenceType>RecursYearly</recurrenceType>
     </holidays>
     <holidays>
-        <businessHours>Spain: Valencia</businessHours>
+        <businessHours>Valencia</businessHours>
         <isRecurring>true</isRecurring>
         <name>San Vicente Mártir</name>
         <recurrenceDayOfMonth>22</recurrenceDayOfMonth>
@@ -431,7 +410,7 @@
         <recurrenceType>RecursYearly</recurrenceType>
     </holidays>
     <holidays>
-        <businessHours>Spain: Barcelona</businessHours>
+        <businessHours>Barcelona</businessHours>
         <isRecurring>true</isRecurring>
         <name>Sant Esteve</name>
         <recurrenceDayOfMonth>26</recurrenceDayOfMonth>
@@ -440,7 +419,7 @@
         <recurrenceType>RecursYearly</recurrenceType>
     </holidays>
     <holidays>
-        <businessHours>Spain: Bilbao</businessHours>
+        <businessHours>Bilbao</businessHours>
         <isRecurring>true</isRecurring>
         <name>Santiago Apóstol</name>
         <recurrenceDayOfMonth>25</recurrenceDayOfMonth>
@@ -449,13 +428,13 @@
         <recurrenceType>RecursYearly</recurrenceType>
     </holidays>
     <holidays>
-        <businessHours>Spain: Barcelona</businessHours>
-        <businessHours>Spain: Bilbao</businessHours>
-        <businessHours>Spain: Madrid</businessHours>
-        <businessHours>Spain: Málaga</businessHours>
-        <businessHours>Spain: National (Open office)</businessHours>
-        <businessHours>Spain: Sevilla</businessHours>
-        <businessHours>Spain: Valencia</businessHours>
+        <businessHours>Barcelona</businessHours>
+        <businessHours>Bilbao</businessHours>
+        <businessHours>España</businessHours>
+        <businessHours>Madrid</businessHours>
+        <businessHours>Málaga</businessHours>
+        <businessHours>Sevilla</businessHours>
+        <businessHours>Valencia</businessHours>
         <isRecurring>true</isRecurring>
         <name>Todos los Santos</name>
         <recurrenceDayOfMonth>1</recurrenceDayOfMonth>
@@ -464,7 +443,7 @@
         <recurrenceType>RecursYearly</recurrenceType>
     </holidays>
     <holidays>
-        <businessHours>Spain: Málaga</businessHours>
+        <businessHours>Málaga</businessHours>
         <isRecurring>true</isRecurring>
         <name>Toma de Málaga por los Reyes Católicos</name>
         <recurrenceDayOfMonth>19</recurrenceDayOfMonth>
@@ -473,13 +452,13 @@
         <recurrenceType>RecursYearly</recurrenceType>
     </holidays>
     <holidays>
-        <businessHours>Spain: Barcelona</businessHours>
-        <businessHours>Spain: Bilbao</businessHours>
-        <businessHours>Spain: Madrid</businessHours>
-        <businessHours>Spain: Málaga</businessHours>
-        <businessHours>Spain: National (Open office)</businessHours>
-        <businessHours>Spain: Sevilla</businessHours>
-        <businessHours>Spain: Valencia</businessHours>
+        <businessHours>Barcelona</businessHours>
+        <businessHours>Bilbao</businessHours>
+        <businessHours>España</businessHours>
+        <businessHours>Madrid</businessHours>
+        <businessHours>Málaga</businessHours>
+        <businessHours>Sevilla</businessHours>
+        <businessHours>Valencia</businessHours>
         <isRecurring>true</isRecurring>
         <name>Viernes Santo</name>
         <recurrenceDayOfMonth>19</recurrenceDayOfMonth>
@@ -488,7 +467,7 @@
         <recurrenceType>RecursYearly</recurrenceType>
     </holidays>
     <holidays>
-        <businessHours>Spain: Bilbao</businessHours>
+        <businessHours>Bilbao</businessHours>
         <isRecurring>true</isRecurring>
         <name>Viernes de la Semana Grande</name>
         <recurrenceDayOfMonth>23</recurrenceDayOfMonth>
@@ -497,7 +476,7 @@
         <recurrenceType>RecursYearly</recurrenceType>
     </holidays>
     <holidays>
-        <businessHours>Spain: Málaga</businessHours>
+        <businessHours>Málaga</businessHours>
         <isRecurring>true</isRecurring>
         <name>Virgen de la Victoria</name>
         <recurrenceDayOfMonth>8</recurrenceDayOfMonth>

@@ -168,8 +168,9 @@
     </fields>
     <fields>
         <fullName>FinalWage__c</fullName>
+        <description>This formula is incorrect as not all months have same number of days and working hours</description>
         <externalId>false</externalId>
-        <formula>IF( TotalRecordedByCompany__c  &lt;&gt;  EmployeeId__r.ByContractMustWorkHours__c ,TotalRecordedByCompany__c *  EmployeeId__r.PerDayWage__c  , EmployeeId__r.MonthlyWage__c )</formula>
+        <formula>IF( TotalRecordedByCompany__c &lt;&gt;  (EmployeeId__r.ByContractMonthlyWorkingHours__c) ,TotalRecordedByCompany__c * EmployeeId__r.HourlyWage__c , EmployeeId__r.MonthlyWage__c )</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>Salario final</label>
         <precision>18</precision>

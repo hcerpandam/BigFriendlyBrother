@@ -400,7 +400,7 @@ IF(
                 <sorted>false</sorted>
                 <value>
                     <fullName>Aceptado</fullName>
-                    <default>false</default>
+                    <default>true</default>
                     <label>Aceptado</label>
                 </value>
                 <value>
@@ -481,15 +481,6 @@ IF(
         <trackTrending>false</trackTrending>
         <type>MasterDetail</type>
         <writeRequiresMasterRead>false</writeRequiresMasterRead>
-    </fields>
-    <fields>
-        <fullName>WIReviewed__c</fullName>
-        <defaultValue>false</defaultValue>
-        <externalId>false</externalId>
-        <label>Revisado por Inspección de Trabajo</label>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Checkbox</type>
     </fields>
     <fields>
         <fullName>isTeleworking__c</fullName>
