@@ -200,33 +200,12 @@
     <enableFeeds>true</enableFeeds>
     <externalSharingModel>Private</externalSharingModel>
     <fields>
-        <fullName>IsEmployeeType__c</fullName>
+        <fullName>IsEmployee__c</fullName>
+        <defaultValue>false</defaultValue>
         <externalId>false</externalId>
         <label>Es empleado</label>
-        <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
-        <type>Picklist</type>
-        <valueSet>
-            <restricted>true</restricted>
-            <valueSetDefinition>
-                <sorted>false</sorted>
-                <value>
-                    <fullName>No</fullName>
-                    <default>true</default>
-                    <label>No</label>
-                </value>
-                <value>
-                    <fullName>Empleado</fullName>
-                    <default>false</default>
-                    <label>Empleado</label>
-                </value>
-                <value>
-                    <fullName>Recursos Humanos</fullName>
-                    <default>false</default>
-                    <label>Recursos Humanos</label>
-                </value>
-            </valueSetDefinition>
-        </valueSet>
+        <type>Checkbox</type>
     </fields>
     <fields>
         <fullName>ManagerId</fullName>
@@ -272,11 +251,4 @@
         <searchResultsAdditionalFields>CORE.USERS.EMAIL</searchResultsAdditionalFields>
     </searchLayouts>
     <sharingModel>Read</sharingModel>
-    <validationRules>
-        <fullName>UserMobileIsRequired</fullName>
-        <active>true</active>
-        <errorConditionFormula>ISNULL(MobilePhone)</errorConditionFormula>
-        <errorDisplayField>MobilePhone</errorDisplayField>
-        <errorMessage>El teléfono móvil del usuario debe estar informado</errorMessage>
-    </validationRules>
 </CustomObject>

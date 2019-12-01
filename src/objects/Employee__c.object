@@ -153,11 +153,35 @@
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
     <fields>
-        <fullName>ByContractMustWorkHours__c</fullName>
+        <fullName>ByContractAnnualWorkingHours__c</fullName>
         <externalId>false</externalId>
+        <formula>2024</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Horas anuales por contrato</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>ByContractMonthlyWorkingHours__c</fullName>
+        <description>Hours per month excluding weekends</description>
+        <externalId>false</externalId>
+        <formula>((( FLOOR ( ( DATE ( YEAR (DATE (YEAR(TODAY()),MONTH(TODAY()),28)+5), 
+MONTH(DATE (YEAR(TODAY()),MONTH(TODAY()),28)+5), 1 ) - 1 - DATE (1900,01,07) ) / 7 ) *5 ) 
++ MIN ( 5, MOD ( DATE ( YEAR (DATE (YEAR(TODAY()),MONTH(TODAY()),28)+5), 
+MONTH(DATE (YEAR(TODAY()),MONTH(TODAY()),28)+5), 1 ) - 1 - DATE (1900,01,07), 7 ) ) 
+) - 
+(( FLOOR ( ( DATE(YEAR(TODAY()),MONTH(TODAY()),1) - DATE (1900,01,07) ) / 7 ) *5 ) 
++ MIN ( 5, MOD ( DATE(YEAR(TODAY()),MONTH(TODAY()),1) - DATE (1900,01,07), 7 ) ) 
+)) * 8</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>Horas mensuales por contrato</label>
-        <precision>5</precision>
-        <required>true</required>
+        <precision>18</precision>
+        <required>false</required>
         <scale>2</scale>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
@@ -188,6 +212,19 @@
         <type>Location</type>
     </fields>
     <fields>
+        <fullName>CurrentLinkedHeadquarters__c</fullName>
+        <deleteConstraint>Restrict</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Sede asociada</label>
+        <referenceTo>Headquarters__c</referenceTo>
+        <relationshipLabel>Empleados</relationshipLabel>
+        <relationshipName>Empleados</relationshipName>
+        <required>true</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
         <fullName>DailyWage__c</fullName>
         <externalId>false</externalId>
         <formula>CASE( MONTH(TODAY()) ,
@@ -211,19 +248,6 @@ MonthlyWage__c/28)</formula>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Currency</type>
-    </fields>
-    <fields>
-        <fullName>EmployeeAddress__c</fullName>
-        <deleteConstraint>Restrict</deleteConstraint>
-        <externalId>false</externalId>
-        <label>Dirección del empleado</label>
-        <referenceTo>Address</referenceTo>
-        <relationshipLabel>Empleados</relationshipLabel>
-        <relationshipName>Empleados</relationshipName>
-        <required>true</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Lookup</type>
     </fields>
     <fields>
         <fullName>EmployeeBusinessHoursId__c</fullName>
@@ -261,6 +285,19 @@ MonthlyWage__c/28)</formula>
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>HourlyWage__c</fullName>
+        <externalId>false</externalId>
+        <formula>DailyWage__c / 8</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Salario por hora</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
         <fullName>InCompany__c</fullName>
         <externalId>false</externalId>
         <formula>LinkedUser__r.IsActive</formula>
@@ -271,19 +308,10 @@ MonthlyWage__c/28)</formula>
         <type>Checkbox</type>
     </fields>
     <fields>
-        <fullName>IsTeamLeader__c</fullName>
-        <defaultValue>false</defaultValue>
-        <externalId>false</externalId>
-        <label>Es Team leader</label>
-        <trackHistory>true</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
         <fullName>Level__c</fullName>
         <externalId>false</externalId>
         <label>Categoría profesional</label>
-        <required>true</required>
+        <required>false</required>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
@@ -292,54 +320,9 @@ MonthlyWage__c/28)</formula>
             <valueSetDefinition>
                 <sorted>false</sorted>
                 <value>
-                    <fullName>1</fullName>
+                    <fullName>12</fullName>
                     <default>false</default>
-                    <label>1</label>
-                </value>
-                <value>
-                    <fullName>2</fullName>
-                    <default>false</default>
-                    <label>2</label>
-                </value>
-                <value>
-                    <fullName>3</fullName>
-                    <default>false</default>
-                    <label>3</label>
-                </value>
-                <value>
-                    <fullName>4</fullName>
-                    <default>false</default>
-                    <label>4</label>
-                </value>
-                <value>
-                    <fullName>5</fullName>
-                    <default>false</default>
-                    <label>5</label>
-                </value>
-                <value>
-                    <fullName>6</fullName>
-                    <default>false</default>
-                    <label>6</label>
-                </value>
-                <value>
-                    <fullName>7</fullName>
-                    <default>false</default>
-                    <label>7</label>
-                </value>
-                <value>
-                    <fullName>8</fullName>
-                    <default>false</default>
-                    <label>8</label>
-                </value>
-                <value>
-                    <fullName>9</fullName>
-                    <default>false</default>
-                    <label>9</label>
-                </value>
-                <value>
-                    <fullName>10</fullName>
-                    <default>false</default>
-                    <label>10</label>
+                    <label>12</label>
                 </value>
                 <value>
                     <fullName>11</fullName>
@@ -347,9 +330,54 @@ MonthlyWage__c/28)</formula>
                     <label>11</label>
                 </value>
                 <value>
-                    <fullName>12</fullName>
+                    <fullName>10</fullName>
                     <default>false</default>
-                    <label>12</label>
+                    <label>10</label>
+                </value>
+                <value>
+                    <fullName>9</fullName>
+                    <default>false</default>
+                    <label>9</label>
+                </value>
+                <value>
+                    <fullName>8</fullName>
+                    <default>false</default>
+                    <label>8</label>
+                </value>
+                <value>
+                    <fullName>7</fullName>
+                    <default>false</default>
+                    <label>7</label>
+                </value>
+                <value>
+                    <fullName>6</fullName>
+                    <default>false</default>
+                    <label>6</label>
+                </value>
+                <value>
+                    <fullName>5</fullName>
+                    <default>false</default>
+                    <label>5</label>
+                </value>
+                <value>
+                    <fullName>4</fullName>
+                    <default>false</default>
+                    <label>4</label>
+                </value>
+                <value>
+                    <fullName>3</fullName>
+                    <default>false</default>
+                    <label>3</label>
+                </value>
+                <value>
+                    <fullName>2</fullName>
+                    <default>false</default>
+                    <label>2</label>
+                </value>
+                <value>
+                    <fullName>1</fullName>
+                    <default>false</default>
+                    <label>1</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
@@ -365,31 +393,6 @@ MonthlyWage__c/28)</formula>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
-    </fields>
-    <fields>
-        <fullName>MarriageStatus__c</fullName>
-        <externalId>false</externalId>
-        <label>Estado civil</label>
-        <required>true</required>
-        <trackHistory>true</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Picklist</type>
-        <valueSet>
-            <restricted>true</restricted>
-            <valueSetDefinition>
-                <sorted>false</sorted>
-                <value>
-                    <fullName>Casado</fullName>
-                    <default>false</default>
-                    <label>Casado</label>
-                </value>
-                <value>
-                    <fullName>Soltero</fullName>
-                    <default>false</default>
-                    <label>Soltero</label>
-                </value>
-            </valueSetDefinition>
-        </valueSet>
     </fields>
     <fields>
         <fullName>MobilePhone__c</fullName>
@@ -408,19 +411,6 @@ MonthlyWage__c/28)</formula>
         <required>true</required>
         <scale>2</scale>
         <trackHistory>true</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Currency</type>
-    </fields>
-    <fields>
-        <fullName>PerDayWage__c</fullName>
-        <externalId>false</externalId>
-        <formula>DailyWage__c /  ByContractMustWorkHours__c</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>Salario por hora</label>
-        <precision>18</precision>
-        <required>false</required>
-        <scale>2</scale>
-        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Currency</type>
     </fields>
@@ -452,39 +442,5 @@ MonthlyWage__c/28)</formula>
     <pluralLabel>Empleados</pluralLabel>
     <searchLayouts/>
     <sharingModel>ReadWrite</sharingModel>
-    <validationRules>
-        <fullName>CompanyIdFormat</fullName>
-        <active>true</active>
-        <errorConditionFormula>CONTAINS( CompanyId__c , &quot;@techconsultant.com&quot;)  = False</errorConditionFormula>
-        <errorDisplayField>CompanyId__c</errorDisplayField>
-        <errorMessage>El Id de empresa debe seguir el formato xxx@techconsultant.com</errorMessage>
-    </validationRules>
-    <validationRules>
-        <fullName>HasLinkedUser</fullName>
-        <active>true</active>
-        <errorConditionFormula>LinkedUser__c  = null</errorConditionFormula>
-        <errorDisplayField>LinkedUser__c</errorDisplayField>
-        <errorMessage>No se puede generar un empleado sin un usuario vinculado</errorMessage>
-    </validationRules>
-    <validationRules>
-        <fullName>LinkedUserNotChanged</fullName>
-        <active>true</active>
-        <description>Comprobación de que sólo se ha asignado un usuario vinculado</description>
-        <errorConditionFormula>AND( !ISBLANK(FullName__c) , ISNEW() = False  )</errorConditionFormula>
-        <errorMessage>El usuario vinculado no puede cambiarse</errorMessage>
-    </validationRules>
-    <validationRules>
-        <fullName>SameEmailAsUser</fullName>
-        <active>true</active>
-        <errorConditionFormula>EmployeeEmail__c  &lt;&gt;  LinkedUser__r.Email &amp;&amp;  LinkedUser__r.Profile.Name != &apos;GodBigFriendlyBrother&apos;</errorConditionFormula>
-        <errorDisplayField>EmployeeEmail__c</errorDisplayField>
-        <errorMessage>El email del empleado no puede ser distinto del de su usuario vinculado</errorMessage>
-    </validationRules>
-    <validationRules>
-        <fullName>SameMobileAsUser</fullName>
-        <active>false</active>
-        <errorConditionFormula>MobilePhone__c  &lt;&gt; LinkedUser__r.MobilePhone</errorConditionFormula>
-        <errorMessage>El teléfono del empleado debe ser igual al del usuario al que está vinculado</errorMessage>
-    </validationRules>
     <visibility>Public</visibility>
 </CustomObject>

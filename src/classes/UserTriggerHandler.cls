@@ -3,7 +3,7 @@
 * @date         26/11/2019
 *               Implements the ITrigger interface to help ensure the trigger code is bulkified and all in one place.
 */
-public with sharing class UserTriggerHandler implements ITrigger {
+public with sharing class UserTriggerHandler implements ITrigger{
 
     // Var declaration
 
@@ -21,12 +21,20 @@ public with sharing class UserTriggerHandler implements ITrigger {
 
     }
 
-    public void beforeInsert(SObject sObj) {  
+    public void beforeInsert(SObject sObj) {
+        User u = (User)sObj;
+        String strErrorMsg = null;
 
+        if(String.isBlank(String.valueOf(u.MobilePhone))){
+            strErrorMsg = 'El móvil del usuario es un campo obligatorio';
+        }
+        if(!String.isBlank(strErrorMsg)){
+            u.addError(strErrorMsg);
+        }
     }
 
     public void beforeUpdate(SObject oldSobj, SObject sObj) {
-        
+
     }
 
     public void beforeDelete(SObject sObj) {
@@ -60,5 +68,5 @@ public with sharing class UserTriggerHandler implements ITrigger {
     }
 
     // Other methods
-
+    
 }

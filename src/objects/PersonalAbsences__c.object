@@ -159,7 +159,7 @@
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
-        <type>Date</type>
+        <type>DateTime</type>
     </fields>
     <fields>
         <fullName>AbsenceReason__c</fullName>
@@ -258,10 +258,10 @@
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
-        <type>Date</type>
+        <type>DateTime</type>
     </fields>
     <fields>
-        <fullName>Aprobada_por_Recursos_Humanos__c</fullName>
+        <fullName>ApprovedByHHRR__c</fullName>
         <defaultValue>false</defaultValue>
         <externalId>false</externalId>
         <label>Aprobada por Recursos Humanos</label>
@@ -270,28 +270,24 @@
         <type>Checkbox</type>
     </fields>
     <fields>
-        <fullName>DailyAbsenceRange__c</fullName>
+        <fullName>DailyAbsenceRangeNotSupervening__c</fullName>
         <externalId>false</externalId>
-        <formula>CASE( AbsenceReason__c ,
-&apos;Enfermedad laboral&apos;,9,
-&apos;Enfermedad no laboral&apos;,9,
-&apos;Fallecimiento/Enfermedad hasta segundo grado&apos;,9,
-&apos;Permiso maternidad/paternidad&apos;,9,
-&apos;Festivo&apos;,9,
-&apos;Elecciones sindicales&apos;,4,
-&apos;Comité de empresa, seguridad y salud&apos;,4,
-&apos;Deber de carácter público&apos;,9,
-&apos;Matrimonio&apos;,9,
-&apos;Traslado de domicilio habitual&apos;,9,
-&apos;Vacaciones&apos;,9,
-&apos;Formación (instructor)&apos;,9,
-&apos;Formación (alumno)&apos;,9,
-&apos;Evaluación (evaluador)&apos;,1,
-&apos;Evaluación (evaluado)&apos;,1,
-0)</formula>
+        <formula>9</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>Duración de la ausencia</label>
+        <label>Duración de ausencia: No sobrevenida</label>
         <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>DailyAbsenceRangeSupervening__c</fullName>
+        <externalId>false</externalId>
+        <label>Duración de ausencia: Sobrevenida</label>
+        <precision>3</precision>
         <required>false</required>
         <scale>2</scale>
         <trackHistory>false</trackHistory>

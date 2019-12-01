@@ -153,148 +153,108 @@
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
     <fields>
-        <fullName>EndDate__c</fullName>
+        <fullName>EndTime__c</fullName>
         <externalId>false</externalId>
-        <label>Fecha de fin</label>
+        <label>Hora de salida</label>
+        <required>true</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Time</type>
+    </fields>
+    <fields>
+        <fullName>FridayDate__c</fullName>
+        <externalId>false</externalId>
+        <label>Viernes</label>
         <required>true</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Date</type>
     </fields>
     <fields>
-        <fullName>FridayEndTime__c</fullName>
+        <fullName>MondayDate__c</fullName>
         <externalId>false</externalId>
-        <label>Viernes: Hora de salida</label>
-        <required>true</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Time</type>
-    </fields>
-    <fields>
-        <fullName>FridayStartTime__c</fullName>
-        <externalId>false</externalId>
-        <label>Viernes: Hora de entrada</label>
-        <required>true</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Time</type>
-    </fields>
-    <fields>
-        <fullName>MondayEndTime__c</fullName>
-        <externalId>false</externalId>
-        <label>Lunes: Hora de salida</label>
-        <required>true</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Time</type>
-    </fields>
-    <fields>
-        <fullName>MondayStartTime__c</fullName>
-        <externalId>false</externalId>
-        <label>Lunes: Hora de entrada</label>
-        <required>true</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Time</type>
-    </fields>
-    <fields>
-        <fullName>SaturdayEndTime__c</fullName>
-        <externalId>false</externalId>
-        <label>Sábado: Hora de salida</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Time</type>
-    </fields>
-    <fields>
-        <fullName>SaturdayStartTime__c</fullName>
-        <externalId>false</externalId>
-        <label>Sábado: Hora de entrada</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Time</type>
-    </fields>
-    <fields>
-        <fullName>StartingDay__c</fullName>
-        <externalId>false</externalId>
-        <label>Fecha de inicio</label>
+        <label>Lunes</label>
         <required>true</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Date</type>
     </fields>
     <fields>
-        <fullName>SundayEndTime__c</fullName>
+        <fullName>PublicHolidays__c</fullName>
         <externalId>false</externalId>
-        <label>Domingo: Hora de salida</label>
+        <label>Festivo</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
-        <type>Time</type>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Lunes</fullName>
+                    <default>false</default>
+                    <label>Lunes</label>
+                </value>
+                <value>
+                    <fullName>Martes</fullName>
+                    <default>false</default>
+                    <label>Martes</label>
+                </value>
+                <value>
+                    <fullName>Miércoles</fullName>
+                    <default>false</default>
+                    <label>Miércoles</label>
+                </value>
+                <value>
+                    <fullName>Jueves</fullName>
+                    <default>false</default>
+                    <label>Jueves</label>
+                </value>
+                <value>
+                    <fullName>Viernes</fullName>
+                    <default>false</default>
+                    <label>Viernes</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>5</visibleLines>
     </fields>
     <fields>
-        <fullName>SundayStartTime__c</fullName>
+        <fullName>StartTime__c</fullName>
         <externalId>false</externalId>
-        <label>Domingo: Hora de entrada</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Time</type>
-    </fields>
-    <fields>
-        <fullName>ThursdayEndTime__c</fullName>
-        <externalId>false</externalId>
-        <label>Jueves: Hora de salida</label>
+        <label>Hora de entrada</label>
         <required>true</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Time</type>
     </fields>
     <fields>
-        <fullName>ThursdayStartTime__c</fullName>
+        <fullName>ThursdayDate__c</fullName>
         <externalId>false</externalId>
-        <label>Jueves: Hora de entrada</label>
+        <label>Jueves</label>
         <required>true</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
-        <type>Time</type>
+        <type>Date</type>
     </fields>
     <fields>
-        <fullName>TuesdayEndTime__c</fullName>
+        <fullName>TuesdayDate__c</fullName>
         <externalId>false</externalId>
-        <label>Martes: Hora de Salida</label>
+        <label>Martes</label>
         <required>true</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
-        <type>Time</type>
+        <type>Date</type>
     </fields>
     <fields>
-        <fullName>TuesdayStartTime__c</fullName>
+        <fullName>WednesdayDate__c</fullName>
         <externalId>false</externalId>
-        <label>Martes: Hora de entrada</label>
+        <label>Miércoles</label>
         <required>true</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
-        <type>Time</type>
-    </fields>
-    <fields>
-        <fullName>WednesdayEndTime__c</fullName>
-        <externalId>false</externalId>
-        <label>Miércoles: Hora de salida</label>
-        <required>true</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Time</type>
-    </fields>
-    <fields>
-        <fullName>WednesdayStartTime__c</fullName>
-        <externalId>false</externalId>
-        <label>Miércoles: Hora de entrada</label>
-        <required>true</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Time</type>
+        <type>Date</type>
     </fields>
     <label>Horario de empleado</label>
     <listViews>
@@ -303,10 +263,9 @@
         <label>All</label>
     </listViews>
     <nameField>
-        <displayFormat>HE-{0000}</displayFormat>
-        <label>Número de horario</label>
+        <label>Nombre del horario</label>
         <trackHistory>false</trackHistory>
-        <type>AutoNumber</type>
+        <type>Text</type>
     </nameField>
     <pluralLabel>Horario de empleados</pluralLabel>
     <searchLayouts/>
