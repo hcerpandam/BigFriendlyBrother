@@ -65,7 +65,7 @@ public with sharing class TimeRecordControlTriggerHandler implements ITrigger {
 
         if(newTimeRec.isTeleworking__c || newTimeRec.EmployeeHasLeftWorkplace__c == true){
             newTimeRec.RecordedByCompany__c = (toNumber(newTimeRec.SelectedEndWorkingHours__c) - newTimeRec.LaunchRange__c - newTimeRec.BreakRange__c -newTimeRec.OvertimeCheckControls__c - toNumber(newTimeRec.StarWorkingTime__c));
-            newTimeRec.Status__c = newTimeRec.RecordedByCompany__c>12?'Inspeccionar':'Aceptado';
+            newTimeRec.Status__c = newTimeRec.RecordedByCompany__c>9?'Inspeccionar':'Aceptado';
         }else{
             if(newTimeRec.EmployeeHasLeftWorkplace__c == false){
                 newTimeRec.Status__c = 'Fraudulento';
