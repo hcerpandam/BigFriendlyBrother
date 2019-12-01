@@ -156,14 +156,20 @@
         <fullName>BreakRange__c</fullName>
         <externalId>false</externalId>
         <formula>IF(
-(((HOUR(FirstBreakEnd__c ) - HOUR(FirstBreakStart__c)) + ((MINUTE(FirstBreakEnd__c ) - MINUTE(FirstBreakStart__c ))/60))+
-((HOUR(SecondBreakEnd__c) - HOUR(SecondBreakStart__c)) + ((MINUTE(FirstBreakEnd__c ) - MINUTE(FirstBreakStart__c ))/60))+
-((HOUR(ThirdBreakEnd__c) - HOUR(ThirdBreakStart__c)) + ((MINUTE(ThirdBreakEnd__c) - MINUTE(ThirdBreakStart__c))/60)))&lt;=0.25
-, 
-0,
-(((HOUR(FirstBreakEnd__c ) - HOUR(FirstBreakStart__c)) + ((MINUTE(FirstBreakEnd__c ) - MINUTE(FirstBreakStart__c ))/60))+
-((HOUR(SecondBreakEnd__c) - HOUR(SecondBreakStart__c)) + ((MINUTE(FirstBreakEnd__c ) - MINUTE(FirstBreakStart__c ))/60))+
-((HOUR(ThirdBreakEnd__c) - HOUR(ThirdBreakStart__c)) + ((MINUTE(ThirdBreakEnd__c) - MINUTE(ThirdBreakStart__c))/60)))-0.25)</formula>
+(((HOUR(FirstBreakEnd__c ) - HOUR(FirstBreakStart__c)) + 
+((MINUTE(FirstBreakEnd__c ) - MINUTE(FirstBreakStart__c ))/60))+
+((HOUR(SecondBreakEnd__c) - HOUR(SecondBreakStart__c)) + 
+((MINUTE(FirstBreakEnd__c ) - MINUTE(FirstBreakStart__c ))/60))+
+((HOUR(ThirdBreakEnd__c) - HOUR(ThirdBreakStart__c)) + 
+((MINUTE(ThirdBreakEnd__c) - MINUTE(ThirdBreakStart__c))/60)))&gt;0.25
+,(((HOUR(FirstBreakEnd__c ) - HOUR(FirstBreakStart__c)) + 
+((MINUTE(FirstBreakEnd__c ) - MINUTE(FirstBreakStart__c ))/60))+
+((HOUR(SecondBreakEnd__c) - HOUR(SecondBreakStart__c)) + 
+((MINUTE(FirstBreakEnd__c ) - MINUTE(FirstBreakStart__c ))/60))+
+((HOUR(ThirdBreakEnd__c) - HOUR(ThirdBreakStart__c)) + 
+((MINUTE(ThirdBreakEnd__c) - MINUTE(ThirdBreakStart__c))/60)))-0.25, 
+0
+)</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>Duración descansos</label>
         <precision>18</precision>
@@ -288,17 +294,17 @@ FALSE)</formula>
         <fullName>OvertimeCheckControls__c</fullName>
         <externalId>false</externalId>
         <formula>IF(
-((HOUR(FirstCheckInsertion__c) - HOUR(FirstCheckTime__c))+(MINUTE(FirstCheckInsertion__c)-MINUTE(FirstCheckTime__c))/60)&lt;=0.1, 
-0,
-(HOUR(FirstCheckInsertion__c) - HOUR(FirstCheckTime__c))+(MINUTE(FirstCheckInsertion__c)-MINUTE(FirstCheckTime__c))/60)+
+((HOUR(FirstCheckInsertion__c) - HOUR(FirstCheckTime__c))+(MINUTE(FirstCheckInsertion__c)-MINUTE(FirstCheckTime__c))/60)&gt;0.1, 
+(HOUR(FirstCheckInsertion__c) - HOUR(FirstCheckTime__c))+(MINUTE(FirstCheckInsertion__c)-MINUTE(FirstCheckTime__c))/60,
+0)+
 IF(
-((HOUR(SecondCheckInsertion__c ) - HOUR(SecondCheckTime__c))+(MINUTE(SecondCheckInsertion__c )-MINUTE(SecondCheckTime__c))/60)&lt;=0.1, 
-0,
-(HOUR(SecondCheckInsertion__c ) - HOUR(SecondCheckTime__c))+(MINUTE(SecondCheckInsertion__c )-MINUTE(SecondCheckTime__c))/60)+
+((HOUR(SecondCheckInsertion__c ) - HOUR(SecondCheckTime__c))+(MINUTE(SecondCheckInsertion__c )-MINUTE(SecondCheckTime__c))/60)&gt;0.1, 
+(HOUR(SecondCheckInsertion__c ) - HOUR(SecondCheckTime__c))+(MINUTE(SecondCheckInsertion__c )-MINUTE(SecondCheckTime__c))/60,
+0)+
 IF(
-((HOUR(ThirdCheckInsertion__c ) - HOUR(ThirdCheckTime__c ))+(MINUTE(ThirdCheckInsertion__c )-MINUTE(ThirdCheckTime__c ))/60)&lt;=0.1, 
-0,
-(HOUR(ThirdCheckInsertion__c ) - HOUR(ThirdCheckTime__c ))+(MINUTE(ThirdCheckInsertion__c )-MINUTE(ThirdCheckTime__c ))/60)</formula>
+((HOUR(ThirdCheckInsertion__c ) - HOUR(ThirdCheckTime__c ))+(MINUTE(ThirdCheckInsertion__c )-MINUTE(ThirdCheckTime__c ))/60)&gt;0.1,
+(HOUR(ThirdCheckInsertion__c ) - HOUR(ThirdCheckTime__c ))+(MINUTE(ThirdCheckInsertion__c )-MINUTE(ThirdCheckTime__c ))/60,
+0)</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>Exceso en inserción códigos de control</label>
         <precision>18</precision>
@@ -413,14 +419,9 @@ IF(
                     <label>Aceptado</label>
                 </value>
                 <value>
-                    <fullName>Fraudulento No marcado fin de trabajo</fullName>
+                    <fullName>Fraudulento</fullName>
                     <default>false</default>
-                    <label>Fraudulento No marcado fin de trabajo</label>
-                </value>
-                <value>
-                    <fullName>Fraudulento No marcadas horas extra</fullName>
-                    <default>false</default>
-                    <label>Fraudulento No marcadas horas extra</label>
+                    <label>Fraudulento</label>
                 </value>
                 <value>
                     <fullName>Inspeccionar</fullName>

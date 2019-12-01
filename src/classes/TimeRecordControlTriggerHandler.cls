@@ -65,21 +65,19 @@ public with sharing class TimeRecordControlTriggerHandler implements ITrigger {
 
         if(newTimeRec.isTeleworking__c || newTimeRec.EmployeeHasLeftWorkplace__c == true){
             newTimeRec.RecordedByCompany__c = (toNumber(newTimeRec.SelectedEndWorkingHours__c) - newTimeRec.LaunchRange__c - newTimeRec.BreakRange__c -newTimeRec.OvertimeCheckControls__c - toNumber(newTimeRec.StarWorkingTime__c));
-            newTimeRec.Status__c = 'Aceptado';
+            newTimeRec.Status__c = newTimeRec.RecordedByCompany__c>12?'Inspeccionar':'Aceptado';
         }else{
             if(newTimeRec.EmployeeHasLeftWorkplace__c == false){
+                newTimeRec.Status__c = 'Fraudulento';
                 if(newTimeRec.SelectedEndWorkingHours__c!=null){
-                    newTimeRec.RecordedByCompany__c = (toNumber(newTimeRec.SelectedEndWorkingHours__c) - newTimeRec.LaunchRange__c - newTimeRec.BreakRange__c - newTimeRec.OvertimeCheckControls__c - toNumber(newTimeRec.StarWorkingTime__c));
-                    newTimeRec.Status__c = 'Fraudulento No marcadas horas extra';
+                    newTimeRec.RecordedByCompany__c = (toNumber(newTimeRec.SelectedEndWorkingHours__c) - newTimeRec.LaunchRange__c - newTimeRec.BreakRange__c - newTimeRec.OvertimeCheckControls__c - toNumber(newTimeRec.StarWorkingTime__c));                  
                 }else{
                     DateTime now = DateTime.now();
                     Time insTime = Time.newInstance(now.hour(), now.minute(), now.second(), 0);
                     newTimeRec.RecordedByCompany__c = (toNumber(insTime) - newTimeRec.LaunchRange__c - newTimeRec.BreakRange__c - newTimeRec.OvertimeCheckControls__c - toNumber(newTimeRec.StarWorkingTime__c));
-                    newTimeRec.Status__c = 'Fraudulento No marcado fin de trabajo';
                 }
             }        
         }
-
     }
 
     public void beforeDelete(SObject sObj) {
@@ -114,7 +112,11 @@ public with sharing class TimeRecordControlTriggerHandler implements ITrigger {
 
     // Other methods
 
+    private static boolean isNull(Decimal instance){
+        return instance == null ? true: false;
+    }
+
     private static double toNumber(Time instance){
-        return (instance.hour()+instance.minute())/60;
+        return (instance.hour()+instance.minute()/60);
     }
 }
