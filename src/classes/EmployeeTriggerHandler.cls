@@ -6,7 +6,7 @@
 public with sharing class EmployeeTriggerHandler implements ITrigger {
 
     // Var declaration
-    private static User u = [SELECT Id, UserRole.Name FROM User WHERE Id = : UserInfo.getUserId()]; // User executing code
+    private static User u = [SELECT Id, Profile.Name FROM User WHERE Id = : UserInfo.getUserId()]; // User executing code
 
     // Constant declaration
     private final static String HHRR_PROF_NAME = 'HumanResources';
@@ -84,7 +84,7 @@ public with sharing class EmployeeTriggerHandler implements ITrigger {
 
         String strErrorMsg = null;
 
-        if(u.UserRole.Name!=HHRR_PROF_NAME){
+        if(u.Profile.Name!=HHRR_PROF_NAME){
             if(newEmp.CurrentLinkedHeadquarters__c!=oldEmp.CurrentLinkedHeadquarters__c){
                 strErrorMsg = 'Solo Recursos Humanos puede modificar la sede asociada';
             }

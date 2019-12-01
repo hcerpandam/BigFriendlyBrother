@@ -6,11 +6,11 @@
 public with sharing class PersonalAbsencesTriggerHandler implements ITrigger {
 
     // Var declaration
-    private static User u = [SELECT Id, UserRole.Name FROM User WHERE Id = : UserInfo.getUserId()]; // User executing code
+    private static User u = [SELECT Id, Profile.Name FROM User WHERE Id = : UserInfo.getUserId()]; // User executing code
     private static List<String> lstabsenceCausesByHHHRR = new List<String>{'Fallecimiento/Enfermedad hasta segundo grado','Enfermedad laboral','Enfermedad no laboral'};
 
     // Constant declaration
-    private final static String HHRR_ROLE_NAME = 'THumanResources';
+    private final static String HHRR_ROLE_NAME = 'HumanResources';
 
     // Builder
 
@@ -29,7 +29,7 @@ public with sharing class PersonalAbsencesTriggerHandler implements ITrigger {
         PersonalAbsences__c instance = (PersonalAbsences__c)sObj;
         String strErrorMsg = null;
 
-        if(u.UserRole.Name!=HHRR_ROLE_NAME){
+        if(u.Profile.Name!=HHRR_ROLE_NAME){
             if(!String.isBlank((String.valueOf(instance.AbsenceReason__c)))){
                 if(!lstabsenceCausesByHHHRR.contains(String.valueOf(instance.AbsenceReason__c))){
                     strErrorMsg = 'Solo Recursos Humanos puede marcar esta causa de justificación';
@@ -53,7 +53,7 @@ public with sharing class PersonalAbsencesTriggerHandler implements ITrigger {
 
         String strErrorMsg = null;
 
-        if(u.UserRole.Name!=HHRR_ROLE_NAME){
+        if(u.Profile.Name!=HHRR_ROLE_NAME){
             if(newInstance.AbsenceReason__c!=oldInstance.AbsenceReason__c){
                 if(!lstabsenceCausesByHHHRR.contains(String.valueOf(newInstance.AbsenceReason__c))){
                     strErrorMsg = 'Solo Recursos Humanos puede marcar esta causa de justificación';
