@@ -187,8 +187,8 @@
         <fullName>EmployeeHasLeftWorkplace__c</fullName>
         <externalId>false</externalId>
         <formula>IF(
-(LEFT(TEXT( GeolocationOnCheckEndWorkingHours__Latitude__s ), 6)  &lt;&gt; LEFT(TEXT( StartWorkingHoursGeolocation__Latitude__s ), 6)) &amp;&amp;
-(LEFT(TEXT( GeolocationOnCheckEndWorkingHours__Longitude__s ), 6)  &lt;&gt; LEFT(TEXT( StartWorkingHoursGeolocation__Longitude__s ), 6)) &amp;&amp;  NOW()  = TimeEndWorkingHoursControl__c , 
+(LEFT(TEXT( GeolocationOnCheckEndWorkingHours__Latitude__s ), 6) &lt;&gt; LEFT(TEXT( StartWorkingHoursGeolocation__Latitude__s ), 6)) &amp;&amp;
+(LEFT(TEXT( GeolocationOnCheckEndWorkingHours__Longitude__s ), 6) &lt;&gt; LEFT(TEXT( StartWorkingHoursGeolocation__Longitude__s ), 6)) &amp;&amp; TIMENOW() = TimeEndWorkingHoursControl__c ,
 TRUE,
 FALSE)</formula>
         <label>Validación correcta abandono sede</label>
@@ -373,7 +373,7 @@ IF(
         <required>false</required>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
-        <type>DateTime</type>
+        <type>Time</type>
     </fields>
     <fields>
         <fullName>StarWorkingTime__c</fullName>
@@ -382,7 +382,7 @@ IF(
         <required>false</required>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
-        <type>DateTime</type>
+        <type>Time</type>
     </fields>
     <fields>
         <fullName>StartWorkingHoursGeolocation__c</fullName>
@@ -409,8 +409,23 @@ IF(
                 <sorted>false</sorted>
                 <value>
                     <fullName>Aceptado</fullName>
-                    <default>true</default>
+                    <default>false</default>
                     <label>Aceptado</label>
+                </value>
+                <value>
+                    <fullName>Fraudulento No marcado fin de trabajo</fullName>
+                    <default>false</default>
+                    <label>Fraudulento No marcado fin de trabajo</label>
+                </value>
+                <value>
+                    <fullName>Fraudulento No marcadas horas extra</fullName>
+                    <default>false</default>
+                    <label>Fraudulento No marcadas horas extra</label>
+                </value>
+                <value>
+                    <fullName>Inspeccionar</fullName>
+                    <default>false</default>
+                    <label>Inspeccionar</label>
                 </value>
                 <value>
                     <fullName>Contencioso</fullName>
@@ -475,7 +490,7 @@ IF(
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
-        <type>DateTime</type>
+        <type>Time</type>
     </fields>
     <fields>
         <fullName>TimeRecordControlId__c</fullName>

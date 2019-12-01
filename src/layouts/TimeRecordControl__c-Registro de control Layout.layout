@@ -126,6 +126,10 @@
                 <behavior>Edit</behavior>
                 <field>IsCopy__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>ContentiousCause__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns/>
         <style>TwoColumnsTopToBottom</style>

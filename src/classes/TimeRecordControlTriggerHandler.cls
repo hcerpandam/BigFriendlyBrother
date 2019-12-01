@@ -44,6 +44,8 @@ public with sharing class TimeRecordControlTriggerHandler implements ITrigger {
                 strErrorMsg = 'Solo el empleado puede marcar el registro como contencioso';
             }else if(newTimeRec.Status__c == 'Resuelto Inspección' && u.Profile.Name != LI_PROF_NAME){
                 strErrorMsg = 'Solo Inspección de Trabajo puede marcar el registro como Resuelto inspección';
+            }else if((oldTimeRec.Status__c.contains('Fraudulento') || (oldTimeRec.Status__c == 'Inspeccionar') && newTimeRec.Status__c == 'Aceptado' && u.Profile.Name == EMP_PROF_NAME)){
+                strErrorMsg = 'El empleado no puede marcar un registro Fraudulento como Aceptado';
             }
         }
 
@@ -61,7 +63,23 @@ public with sharing class TimeRecordControlTriggerHandler implements ITrigger {
             newTimeRec.addError(strErrorMsg);
         }
 
-        // Hacer supuestos de modificación por mejoras
+        if(newTimeRec.isTeleworking__c || newTimeRec.EmployeeHasLeftWorkplace__c == true){
+            newTimeRec.RecordedByCompany__c = (toNumber(newTimeRec.SelectedEndWorkingHours__c) - newTimeRec.LaunchRange__c - newTimeRec.BreakRange__c -newTimeRec.OvertimeCheckControls__c - toNumber(newTimeRec.StarWorkingTime__c));
+            newTimeRec.Status__c = 'Aceptado';
+        }else{
+            if(newTimeRec.EmployeeHasLeftWorkplace__c == false){
+                if(newTimeRec.SelectedEndWorkingHours__c!=null){
+                    newTimeRec.RecordedByCompany__c = (toNumber(newTimeRec.SelectedEndWorkingHours__c) - newTimeRec.LaunchRange__c - newTimeRec.BreakRange__c - newTimeRec.OvertimeCheckControls__c - toNumber(newTimeRec.StarWorkingTime__c));
+                    newTimeRec.Status__c = 'Fraudulento No marcadas horas extra';
+                }else{
+                    DateTime now = DateTime.now();
+                    Time insTime = Time.newInstance(now.hour(), now.minute(), now.second(), 0);
+                    newTimeRec.RecordedByCompany__c = (toNumber(insTime) - newTimeRec.LaunchRange__c - newTimeRec.BreakRange__c - newTimeRec.OvertimeCheckControls__c - toNumber(newTimeRec.StarWorkingTime__c));
+                    newTimeRec.Status__c = 'Fraudulento No marcado fin de trabajo';
+                }
+            }        
+        }
+
     }
 
     public void beforeDelete(SObject sObj) {
@@ -96,4 +114,7 @@ public with sharing class TimeRecordControlTriggerHandler implements ITrigger {
 
     // Other methods
 
+    private static double toNumber(Time instance){
+        return (instance.hour()+instance.minute())/60;
+    }
 }
