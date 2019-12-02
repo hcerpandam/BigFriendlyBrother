@@ -153,32 +153,51 @@
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
     <fields>
-        <fullName>BreakRange__c</fullName>
+        <fullName>BreakEnd__c</fullName>
         <externalId>false</externalId>
-        <formula>IF(
-(((HOUR(FirstBreakEnd__c ) - HOUR(FirstBreakStart__c)) + 
-((MINUTE(FirstBreakEnd__c ) - MINUTE(FirstBreakStart__c ))/60))+
-((HOUR(SecondBreakEnd__c) - HOUR(SecondBreakStart__c)) + 
-((MINUTE(FirstBreakEnd__c ) - MINUTE(FirstBreakStart__c ))/60))+
-((HOUR(ThirdBreakEnd__c) - HOUR(ThirdBreakStart__c)) + 
-((MINUTE(ThirdBreakEnd__c) - MINUTE(ThirdBreakStart__c))/60)))&gt;0.25
-,(((HOUR(FirstBreakEnd__c ) - HOUR(FirstBreakStart__c)) + 
-((MINUTE(FirstBreakEnd__c ) - MINUTE(FirstBreakStart__c ))/60))+
-((HOUR(SecondBreakEnd__c) - HOUR(SecondBreakStart__c)) + 
-((MINUTE(FirstBreakEnd__c ) - MINUTE(FirstBreakStart__c ))/60))+
-((HOUR(ThirdBreakEnd__c) - HOUR(ThirdBreakStart__c)) + 
-((MINUTE(ThirdBreakEnd__c) - MINUTE(ThirdBreakStart__c))/60)))-0.25, 
-0
-)</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>Duración descansos</label>
-        <precision>18</precision>
+        <label>Fin del descanso</label>
         <required>false</required>
-        <scale>2</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Time</type>
+    </fields>
+    <fields>
+        <fullName>BreakStart__c</fullName>
+        <externalId>false</externalId>
+        <label>Inicio del descanso</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Time</type>
+    </fields>
+    <fields>
+        <fullName>CheckEndWorkingHours__c</fullName>
+        <externalId>false</externalId>
+        <formula>TIMEVALUE(EndWorkingTime__c) + (0.5 * 60 * 60 * 1000)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Hora de comprobación fin de trabajo</label>
+        <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
-        <type>Number</type>
-        <unique>false</unique>
+        <type>Time</type>
+    </fields>
+    <fields>
+        <fullName>CheckInsertion__c</fullName>
+        <externalId>false</externalId>
+        <label>Inserción del código de control</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Time</type>
+    </fields>
+    <fields>
+        <fullName>CheckRequirement__c</fullName>
+        <externalId>false</externalId>
+        <label>Petición del código de control</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Time</type>
     </fields>
     <fields>
         <fullName>ContentiousCause__c</fullName>
@@ -194,7 +213,8 @@
         <externalId>false</externalId>
         <formula>IF(
 (LEFT(TEXT( GeolocationOnCheckEndWorkingHours__Latitude__s ), 6) &lt;&gt; LEFT(TEXT( StartWorkingHoursGeolocation__Latitude__s ), 6)) &amp;&amp;
-(LEFT(TEXT( GeolocationOnCheckEndWorkingHours__Longitude__s ), 6) &lt;&gt; LEFT(TEXT( StartWorkingHoursGeolocation__Longitude__s ), 6)) &amp;&amp; TIMENOW() = TimeEndWorkingHoursControl__c ,
+(LEFT(TEXT( GeolocationOnCheckEndWorkingHours__Longitude__s ), 6) &lt;&gt; LEFT(TEXT( StartWorkingHoursGeolocation__Longitude__s ), 6)) &amp;&amp; 
+((TIMENOW() + (1 * 60 * 60 * 1000) &gt;=  CheckEndWorkingHours__c) &amp;&amp; (TIMENOW() + (1 * 60 * 60 * 1000) &lt;= EndCheckEndWorkingHours__c)),
 TRUE,
 FALSE)</formula>
         <label>Validación correcta abandono sede</label>
@@ -203,36 +223,20 @@ FALSE)</formula>
         <type>Checkbox</type>
     </fields>
     <fields>
-        <fullName>FirstBreakEnd__c</fullName>
+        <fullName>EndCheckEndWorkingHours__c</fullName>
         <externalId>false</externalId>
-        <label>Fin del primer descanso</label>
+        <formula>TIMEVALUE(EndWorkingTime__c) + (0.75 * 60 * 60 * 1000)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Fin de comprobación fin de trabajo</label>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Time</type>
     </fields>
     <fields>
-        <fullName>FirstBreakStart__c</fullName>
+        <fullName>EndWorkingTime__c</fullName>
         <externalId>false</externalId>
-        <label>Inicio del primer descanso</label>
-        <required>false</required>
-        <trackHistory>true</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Time</type>
-    </fields>
-    <fields>
-        <fullName>FirstCheckInsertion__c</fullName>
-        <externalId>false</externalId>
-        <label>Hora inserción primer control</label>
-        <required>false</required>
-        <trackHistory>true</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Time</type>
-    </fields>
-    <fields>
-        <fullName>FirstCheckTime__c</fullName>
-        <externalId>false</externalId>
-        <label>Hora solicitud primer control</label>
+        <label>Hora marcada fin de trabajo</label>
         <required>false</required>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
@@ -291,31 +295,6 @@ FALSE)</formula>
         <type>Time</type>
     </fields>
     <fields>
-        <fullName>OvertimeCheckControls__c</fullName>
-        <externalId>false</externalId>
-        <formula>IF(
-((HOUR(FirstCheckInsertion__c) - HOUR(FirstCheckTime__c))+(MINUTE(FirstCheckInsertion__c)-MINUTE(FirstCheckTime__c))/60)&gt;0.1, 
-(HOUR(FirstCheckInsertion__c) - HOUR(FirstCheckTime__c))+(MINUTE(FirstCheckInsertion__c)-MINUTE(FirstCheckTime__c))/60,
-0)+
-IF(
-((HOUR(SecondCheckInsertion__c ) - HOUR(SecondCheckTime__c))+(MINUTE(SecondCheckInsertion__c )-MINUTE(SecondCheckTime__c))/60)&gt;0.1, 
-(HOUR(SecondCheckInsertion__c ) - HOUR(SecondCheckTime__c))+(MINUTE(SecondCheckInsertion__c )-MINUTE(SecondCheckTime__c))/60,
-0)+
-IF(
-((HOUR(ThirdCheckInsertion__c ) - HOUR(ThirdCheckTime__c ))+(MINUTE(ThirdCheckInsertion__c )-MINUTE(ThirdCheckTime__c ))/60)&gt;0.1,
-(HOUR(ThirdCheckInsertion__c ) - HOUR(ThirdCheckTime__c ))+(MINUTE(ThirdCheckInsertion__c )-MINUTE(ThirdCheckTime__c ))/60,
-0)</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>Exceso en inserción códigos de control</label>
-        <precision>18</precision>
-        <required>false</required>
-        <scale>2</scale>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Number</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>RecordDate__c</fullName>
         <externalId>false</externalId>
         <label>Fecha de registro</label>
@@ -337,60 +316,6 @@ IF(
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>SecondBreakEnd__c</fullName>
-        <externalId>false</externalId>
-        <label>Fin del segundo descanso</label>
-        <required>false</required>
-        <trackHistory>true</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Time</type>
-    </fields>
-    <fields>
-        <fullName>SecondBreakStart__c</fullName>
-        <externalId>false</externalId>
-        <label>Inicio del segundo descanso</label>
-        <required>false</required>
-        <trackHistory>true</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Time</type>
-    </fields>
-    <fields>
-        <fullName>SecondCheckInsertion__c</fullName>
-        <externalId>false</externalId>
-        <label>Hora inserción segundo control</label>
-        <required>false</required>
-        <trackHistory>true</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Time</type>
-    </fields>
-    <fields>
-        <fullName>SecondCheckTime__c</fullName>
-        <externalId>false</externalId>
-        <label>Hora solicitud segundo control</label>
-        <required>false</required>
-        <trackHistory>true</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Time</type>
-    </fields>
-    <fields>
-        <fullName>SelectedEndWorkingHours__c</fullName>
-        <externalId>false</externalId>
-        <label>Hora marcada fin de trabajo</label>
-        <required>false</required>
-        <trackHistory>true</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Time</type>
-    </fields>
-    <fields>
-        <fullName>StarWorkingTime__c</fullName>
-        <externalId>false</externalId>
-        <label>Hora de inicio de trabajo</label>
-        <required>false</required>
-        <trackHistory>true</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Time</type>
-    </fields>
-    <fields>
         <fullName>StartWorkingHoursGeolocation__c</fullName>
         <displayLocationInDecimal>true</displayLocationInDecimal>
         <externalId>false</externalId>
@@ -400,6 +325,15 @@ IF(
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Location</type>
+    </fields>
+    <fields>
+        <fullName>StartWorkingTime__c</fullName>
+        <externalId>false</externalId>
+        <label>Hora de inicio de trabajo</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Time</type>
     </fields>
     <fields>
         <fullName>Status__c</fullName>
@@ -419,9 +353,9 @@ IF(
                     <label>Aceptado</label>
                 </value>
                 <value>
-                    <fullName>Fraudulento</fullName>
+                    <fullName>Fraudulento por no registro horas extra</fullName>
                     <default>false</default>
-                    <label>Fraudulento</label>
+                    <label>Fraudulento por no registro horas extra</label>
                 </value>
                 <value>
                     <fullName>Inspeccionar</fullName>
@@ -443,55 +377,13 @@ IF(
                     <default>false</default>
                     <label>Resuelto Inspección</label>
                 </value>
+                <value>
+                    <fullName>Fraudulento por inacción</fullName>
+                    <default>false</default>
+                    <label>Fraudulento por inacción</label>
+                </value>
             </valueSetDefinition>
         </valueSet>
-    </fields>
-    <fields>
-        <fullName>ThirdBreakEnd__c</fullName>
-        <externalId>false</externalId>
-        <label>Fin del tercer descanso</label>
-        <required>false</required>
-        <trackHistory>true</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Time</type>
-    </fields>
-    <fields>
-        <fullName>ThirdBreakStart__c</fullName>
-        <externalId>false</externalId>
-        <label>Inicio del tercer descanso</label>
-        <required>false</required>
-        <trackHistory>true</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Time</type>
-    </fields>
-    <fields>
-        <fullName>ThirdCheckInsertion__c</fullName>
-        <externalId>false</externalId>
-        <label>Hora inserción tercer control</label>
-        <required>false</required>
-        <trackHistory>true</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Time</type>
-    </fields>
-    <fields>
-        <fullName>ThirdCheckTime__c</fullName>
-        <externalId>false</externalId>
-        <label>Hora solicitud tercer control</label>
-        <required>false</required>
-        <trackHistory>true</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Time</type>
-    </fields>
-    <fields>
-        <fullName>TimeEndWorkingHoursControl__c</fullName>
-        <externalId>false</externalId>
-        <formula>SelectedEndWorkingHours__c +(0.5/24)</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>Hora de comprobación fin de trabajo</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Time</type>
     </fields>
     <fields>
         <fullName>TimeRecordControlId__c</fullName>
