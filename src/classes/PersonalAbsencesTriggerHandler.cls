@@ -11,6 +11,7 @@ public with sharing class PersonalAbsencesTriggerHandler implements ITrigger {
 
     // Constant declaration
     private final static String HHRR_ROLE_NAME = 'HumanResources';
+    private final static String GOD_PROF_NAME = 'GodBigFriendlyBrother';
 
     // Builder
 
@@ -29,7 +30,7 @@ public with sharing class PersonalAbsencesTriggerHandler implements ITrigger {
         PersonalAbsences__c instance = (PersonalAbsences__c)sObj;
         String strErrorMsg = null;
 
-        if(u.Profile.Name!=HHRR_ROLE_NAME){
+        if(u.Profile.Name!=HHRR_ROLE_NAME && u.Profile.Name!=GOD_PROF_NAME){
             if(!String.isBlank((String.valueOf(instance.AbsenceReason__c)))){
                 if(!lstabsenceCausesByHHHRR.contains(String.valueOf(instance.AbsenceReason__c))){
                     strErrorMsg = 'Solo Recursos Humanos puede marcar esta causa de justificación';
@@ -53,7 +54,7 @@ public with sharing class PersonalAbsencesTriggerHandler implements ITrigger {
 
         String strErrorMsg = null;
 
-        if(u.Profile.Name!=HHRR_ROLE_NAME){
+        if(u.Profile.Name!=HHRR_ROLE_NAME && u.Profile.Name!=GOD_PROF_NAME){
             if(newInstance.AbsenceReason__c!=oldInstance.AbsenceReason__c){
                 if(!lstabsenceCausesByHHHRR.contains(String.valueOf(newInstance.AbsenceReason__c))){
                     strErrorMsg = 'Solo Recursos Humanos puede marcar esta causa de justificación';

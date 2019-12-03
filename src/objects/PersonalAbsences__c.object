@@ -179,16 +179,6 @@
                     <label>Festivo</label>
                 </value>
                 <value>
-                    <fullName>Elecciones sindicales</fullName>
-                    <default>false</default>
-                    <label>Elecciones sindicales</label>
-                </value>
-                <value>
-                    <fullName>Comité de empresa, seguridad y salud</fullName>
-                    <default>false</default>
-                    <label>Comité de empresa, seguridad y salud</label>
-                </value>
-                <value>
                     <fullName>Deber de carácter público</fullName>
                     <default>false</default>
                     <label>Deber de carácter público</label>
@@ -232,16 +222,6 @@
                     <fullName>Formación (alumno)</fullName>
                     <default>false</default>
                     <label>Formación (alumno)</label>
-                </value>
-                <value>
-                    <fullName>Evaluación (evaluador)</fullName>
-                    <default>false</default>
-                    <label>Evaluación (evaluador)</label>
-                </value>
-                <value>
-                    <fullName>Evaluación (evaluado)</fullName>
-                    <default>false</default>
-                    <label>Evaluación (evaluado)</label>
                 </value>
                 <value>
                     <fullName>Fallecimiento/Enfermedad hasta segundo grado</fullName>
