@@ -13,7 +13,6 @@ global class BatchMultiTasks implements Database.Batchable<sObject>, Database.St
 	private static List<Employee__c> lstEmployees;
     private static List<TimeRecordControl__c> lstTimeRec;
     private static List<MonthlyTimeRecordControl__c> lstMonTimeRec;
-    private static List<EmployeeBusinessHours__c> lstEmpBusHrs;
     private static Date insDate = Date.today();
     private Map<Integer,Integer> mapDaysByMonth;
 
@@ -68,7 +67,7 @@ global class BatchMultiTasks implements Database.Batchable<sObject>, Database.St
         Date dat6 = insDate.addDays(5);
         Date dat7 = insDate.addDays(6);
 
-        // Create new MonthlyTimeRecordControl__c in case of mmonth change and assign to all employees
+        // Create new MonthlyTimeRecordControl__c in case of mmonth change and assign them to all employees
         for(MonthlyTimeRecordControl__c monIns: lstMonTimeRec){
             if(dat1.month()!=dat7.month()){
                 if(dat1.month()!=dat3.month()){
