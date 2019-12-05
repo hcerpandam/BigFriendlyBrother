@@ -10,12 +10,11 @@ global class BatchDeleteTimeRecordControls implements Database.Batchable<sObject
 
     // Vars
     private List<TimeRecordControl__c> lstTimeRecToDelete = new List<TimeRecordControl__c>();
-    
-    // Constants
     private Integer CRON_INTERVAL;
     private Integer CRON_INTERVAL_DAY;
 	private Integer BATCH_SIZE;
 	private Integer QUERY_LIMIT;
+    private Date insDate = System.today().addMonths(-1);
 
 
     // Builder
@@ -28,7 +27,8 @@ global class BatchDeleteTimeRecordControls implements Database.Batchable<sObject
 
     // Start
     global List<TimeRecordControl__c> start(Database.BatchableContext BC) {
-        lstTimeRecToDelete = new List<TimeRecordControl__c>([SELECT Id FROM TimeRecordControl__c WHERE isCopy__c = TRUE LIMIT : QUERY_LIMIT]);
+        lstTimeRecToDelete = new List<TimeRecordControl__c>([SELECT Id FROM TimeRecordControl__c WHERE isCopy__c = TRUE OR RecordDate__c =: insDate  LIMIT : QUERY_LIMIT]);
+        doDeleteRemote();
         return lstTimeRecToDelete;
     }
 
@@ -44,15 +44,16 @@ global class BatchDeleteTimeRecordControls implements Database.Batchable<sObject
         if (!Test.isRunningTest()) {
             DateTime currDayTime = System.now();
             System.debug(LoggingLevel.INFO,'Current DateTime is: '+currDayTime);
-            Integer currMin = currDayTime.hour();
-            System.debug(LoggingLevel.INFO,'Current minute is: '+currMin);
-            if(currMin==15){
+            Integer currHour = currDayTime.hour();
+            System.debug(LoggingLevel.INFO,'Current hour is: '+currHour);
+            Integer currMinute = currDayTime.minute();
+            System.debug(LoggingLevel.INFO,'Current minute is: '+currMinute);
+            if(currHour==02 && currMinute==30){
                 scheduleMe(CRON_INTERVAL_DAY, BATCH_SIZE);
             }else{
                 scheduleMe(CRON_INTERVAL, BATCH_SIZE);
             }
 		}
-        // Here queable job to delete from BFBSafe
     }
 
     // Util methods
@@ -60,26 +61,7 @@ global class BatchDeleteTimeRecordControls implements Database.Batchable<sObject
 		System.scheduleBatch(new BatchDeleteTimeRecordControls(), Test.isRunningTest() ? 'ScheduleTestBatchDeleteTimeRecordControls' : 'BatchDeleteTimeRecordControls', interval, batchSize);
 	}
 
-    /*private static HttpResponse doGetResponse(){
-        HTTP insHttp = new HTTP();
-
-        HttpRequest req = new HttpRequest();
-        req.setMethod(HTTP_VERB);
-        req.setHeader('Content-Type', 'application/json');
-        //req.setHeader('Host', 'si.sirkus.es');
-        req.setHeader('Host', NAMED_CRE);
-        req.setHeader('Connection', 'Keep-Alive');
-        req.setEndpoint(EDNPOINT);
-        req.setHeader('Authorization', 'Basic bm9tcWprdGtwdXdud3I6NjI3ZmI0Yjc3Y2ZkNmE1MWQ0Yzk3ZWIxYmQzNjQ2N2IzZWM5MDVmZWVkNzNjODc4MDJmYzkyYTAxOGRiNTcxNA==');
-        //req.setHeader(key, value);   
-        //req.setBody('user=' + sUser +'&pass=' + sPassword);
-        //req.setEndpoint('https://si.sirkus.es/api/v1/' + TOKEN + '/helper-reference/all');
-        //req.setHeader('Cookie',COOKIE);
-        req.setTimeout(2 * 60 * 1000);
-
-        HttpResponse res = insHttp.send(req);
-        res.getStatus();
-        res.getBody();
-        System.debug(LoggingLevel.DEBUG, 'Response: '+res);
-    }*/
+    private static void doDeleteRemote(){
+        CalloutsManagement.doDelete();
+    }
 }
