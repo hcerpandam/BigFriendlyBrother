@@ -62,7 +62,6 @@ global class BatchDeleteTimeRecordControls implements Database.Batchable<sObject
 
     /*private static HttpResponse doGetResponse(){
         HTTP insHttp = new HTTP();
-
         HttpRequest req = new HttpRequest();
         req.setMethod(HTTP_VERB);
         req.setHeader('Content-Type', 'application/json');
@@ -76,7 +75,6 @@ global class BatchDeleteTimeRecordControls implements Database.Batchable<sObject
         //req.setEndpoint('https://si.sirkus.es/api/v1/' + TOKEN + '/helper-reference/all');
         //req.setHeader('Cookie',COOKIE);
         req.setTimeout(2 * 60 * 1000);
-
         HttpResponse res = insHttp.send(req);
         res.getStatus();
         res.getBody();
