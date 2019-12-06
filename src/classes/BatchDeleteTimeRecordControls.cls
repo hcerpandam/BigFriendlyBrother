@@ -40,11 +40,10 @@ global class BatchDeleteTimeRecordControls implements Database.Batchable<sObject
     global void finish(Database.BatchableContext BC){
         if (!Test.isRunningTest()) {
             DateTime currDayTime = System.now();
-            System.debug(LoggingLevel.INFO,'Current DateTime is: '+currDayTime);
             Integer currHour = currDayTime.hour();
             System.debug(LoggingLevel.INFO,'Current hour is: '+currHour);
             if(currHour==03){
-                System.debug(LoggingLevel.DEBUG, 'End of BatchDeleteTimeRecordsControl');
+                System.debug(LoggingLevel.DEBUG, 'End of BatchDeleteTimeRecordsControl at: '+currHour+':'+currDayTime.minute());
             }else{
                 scheduleMe(CRON_INTERVAL, BATCH_SIZE);
             }
