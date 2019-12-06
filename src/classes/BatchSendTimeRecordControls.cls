@@ -25,7 +25,14 @@ global class BatchSendTimeRecordControls implements Database.Batchable<sObject>,
 
     // Start
     global List<TimeRecordControl__c> start(Database.BatchableContext BC) {
-        lstTimeRecToPost = new List<TimeRecordControl__c>([SELECT Id FROM TimeRecordControl__c WHERE RecordDate__c =: insDate  LIMIT : QUERY_LIMIT]);
+        lstTimeRecToPost = new List<TimeRecordControl__c>([SELECT Id,TimeRecordControlId__c, TimeRecordControlId__r.EmployeeId__c, Name, LastModifiedDate, LastModifiedById,
+                        RecordDate__c, isTeleworking__c, StartWorkingTime__c, EndWorkingTime__c, BreakStart__c, BreakEnd__c, LaunchStart__c, LaunchFinish__c, LaunchRange__c,
+                        CheckRequirement__c, CheckInsertion__c, StartWorkingHoursGeolocation__Latitude__s, StartWorkingHoursGeolocation__Longitude__s, StartWorkingHoursGeolocation__c ,
+                        GeolocationOnCheckEndWorkingHours__Latitude__s, GeolocationOnCheckEndWorkingHours__Longitude__s, GeolocationOnCheckEndWorkingHours__c, Status__c, ContentiousCause__c,
+                        CheckEndWorkingHours__c, EndCheckEndWorkingHours__c, EmployeeHasLeftWorkplace__c, RecordedByCompany__c,IsCopy__c 
+                        FROM TimeRecordControl__c 
+                        WHERE RecordDate__c =: insDate  
+                        LIMIT : QUERY_LIMIT]);
         return lstTimeRecToPost;
     }
 
@@ -46,6 +53,7 @@ global class BatchSendTimeRecordControls implements Database.Batchable<sObject>,
             Integer currMinute = currDayTime.minute();
             System.debug(LoggingLevel.INFO,'Current minute is: '+currMinute);
             if(currHour==02 && currMinute==30){
+                scheduleMe(CRON_INTERVAL_DAY, BATCH_SIZE);
                 System.debug(LoggingLevel.DEBUG, 'End of BatchSendTimeRecordControls at: '+currHour+':'+currDayTime.minute());
                 Database.executeBatch(new BatchDeleteTimeRecordControls());
             }else{

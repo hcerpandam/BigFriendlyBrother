@@ -18,7 +18,7 @@ global with sharing class CalloutsManagement {
 
     global CalloutsManagement(){}
 
-    // Methods
+    // Methods: Invoked from batch
 
     public static void doDelete(){
         
