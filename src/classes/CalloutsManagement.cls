@@ -1,9 +1,8 @@
 /**
- * @file        BatchReprocessLeadDigital.apxc
+ * @file        CalloutsManagement.apxc
  * @author      Héctor Cervera Panella
- * @date        05/12/2019
- * @description AutoScheduled batch to:
- *              Manage all diferent callouts defined in project 
+ * @date        06/12/2019
+ * @description Contains all methods to do the CRUD to BFBSafe
  */
 global with sharing class CalloutsManagement {
     
