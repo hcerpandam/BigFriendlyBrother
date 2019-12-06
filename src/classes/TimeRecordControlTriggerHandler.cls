@@ -81,6 +81,7 @@ public with sharing class TimeRecordControlTriggerHandler implements ITrigger {
             }
         }       
 
+        // Still need to control null pointers on breaks and non closed ranges
         if(!String.isBlank(strErrorMsg)){
             newTimeRec.addError(strErrorMsg);
         }else{
