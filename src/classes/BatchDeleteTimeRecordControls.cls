@@ -1,9 +1,9 @@
 /**
- * @file        BatchReprocessLeadDigital.apxc
+ * @file        BatchDeleteTimeRecordControls.apxc
  * @author      Héctor Cervera Panella
  * @date        02/12/2019
  * @description AutoScheduled batch to:
- *              Delete all daily TimeRecordsControls__c where isCopy is True
+ *              Delete all daily TimeRecordsControls__c where isCopy is True or where created a month ago
  *              Call the BFBSafe App static resource to delete all records created four years ago
  */
 global class BatchDeleteTimeRecordControls implements Database.Batchable<sObject>, Database.Stateful, Database.AllowsCallouts{
@@ -11,18 +11,15 @@ global class BatchDeleteTimeRecordControls implements Database.Batchable<sObject
     // Vars
     private List<TimeRecordControl__c> lstTimeRecToDelete = new List<TimeRecordControl__c>();
     private Integer CRON_INTERVAL;
-    private Integer CRON_INTERVAL_DAY;
 	private Integer BATCH_SIZE;
 	private Integer QUERY_LIMIT;
     private Date insDate = System.today().addMonths(-1);
-
 
     // Builder
     global BatchDeleteTimeRecordControls(){
         CRON_INTERVAL = 5;
         BATCH_SIZE = 200;
         QUERY_LIMIT = 10000;
-        CRON_INTERVAL_DAY = 1440;
     }
 
     // Start
@@ -46,10 +43,8 @@ global class BatchDeleteTimeRecordControls implements Database.Batchable<sObject
             System.debug(LoggingLevel.INFO,'Current DateTime is: '+currDayTime);
             Integer currHour = currDayTime.hour();
             System.debug(LoggingLevel.INFO,'Current hour is: '+currHour);
-            Integer currMinute = currDayTime.minute();
-            System.debug(LoggingLevel.INFO,'Current minute is: '+currMinute);
-            if(currHour==02 && currMinute==30){
-                scheduleMe(CRON_INTERVAL_DAY, BATCH_SIZE);
+            if(currHour==03){
+                System.debug(LoggingLevel.DEBUG, 'End of BatchDeleteTimeRecordsControl');
             }else{
                 scheduleMe(CRON_INTERVAL, BATCH_SIZE);
             }
