@@ -18,7 +18,7 @@ global with sharing class CalloutsManagement {
 
     global CalloutsManagement(){}
 
-    // Methods
+    // Methods: Invoked from batch
 
     public static void doDelete(){
         
@@ -31,6 +31,28 @@ global with sharing class CalloutsManagement {
         req.setHeader('Connection', 'Keep-Alive');
         req.setHeader('Authorization', AUTH);
         req.setTimeout(2 * 60 * 1000);
+        
+        HttpResponse resp = new HttpResponse();
+        resp = http.send(req);
+        resp.getStatusCode();
+        resp.getBody();
+        System.debug(LoggingLevel.DEBUG, 'Answer recieved from BFBSafe: '+resp.getStatusCode());
+
+    }
+
+    public static void doCreate(List<TimeRecordControl__c> lstToCreate){
+        
+        HTTP http = new HTTP();
+        HttpRequest req = new HttpRequest();
+
+        req.setMethod(VERB_POST);
+        req.setEndpoint(SENDPOINT);
+        req.setHeader('Content-Type', 'application/json');
+        req.setHeader('Connection', 'Keep-Alive');
+        req.setHeader('Authorization', AUTH);
+        req.setTimeout(2 * 60 * 1000);
+
+        req.setBody(JSON.serializePretty(lstToCreate));
         
         HttpResponse resp = new HttpResponse();
         resp = http.send(req);

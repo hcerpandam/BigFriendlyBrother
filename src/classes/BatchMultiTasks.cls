@@ -16,7 +16,6 @@ global class BatchMultiTasks implements Database.Batchable<sObject>, Database.St
     private static Date insDate = Date.today();
     private Map<Integer,Integer> mapDaysByMonth;
 
-    // Constants
     private Integer CRON_INTERVAL;
     private Integer CRON_INTERVAL_WEEK;
 	private Integer BATCH_SIZE;
