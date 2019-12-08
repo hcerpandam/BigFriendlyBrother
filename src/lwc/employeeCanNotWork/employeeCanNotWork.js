@@ -9,9 +9,5 @@ export default class EmployeeCanNotWork extends LightningElement {
     //@wire(employeeCanWork, { searchKey: '$searchKey' })
     @wire(employeeCanWork)
     boolcanWork; // Ésto es lo que devuelve el controller apex
-    
-    /*constructor() {
-        super();
-    }*/
 
 }
