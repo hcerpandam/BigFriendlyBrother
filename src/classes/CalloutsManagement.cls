@@ -13,7 +13,7 @@ global with sharing class CalloutsManagement {
     private final static String AUTH = 'Basic bm9tcWprdGtwdXdud3I6NjI3ZmI0Yjc3Y2ZkNmE1MWQ0Yzk3ZWIxYmQzNjQ2N2IzZWM5MDVmZWVkNzNjODc4MDJmYzkyYTAxOGRiNTcxNA==';
     private final static String SENDPOINT = 'https://time-record-api.herokuapp.com';
 
-    // Builders
+    // Builder
 
     global CalloutsManagement(){}
 

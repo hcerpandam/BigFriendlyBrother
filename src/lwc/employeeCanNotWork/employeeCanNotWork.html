@@ -1,0 +1,10 @@
+<template>
+    <div class="backgroundEmployeeCanNotWork"><!--CSS-->
+        <template if:true={boolcanWork}>
+            // INVOCO EL OTRO COMPONENTE
+        </template>
+        <template if:false={boolcanWork}>
+            <lightning-spinner alternative-text="Loading" variant="inverse"></lightning-spinner>
+        </template>
+    </div>
+</template>
