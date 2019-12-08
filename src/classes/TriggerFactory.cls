@@ -97,10 +97,6 @@ public with sharing class TriggerFactory {
 			return new EmployeeTriggerHandler();
 		}
 
-        if (soType == EmployeeBusinessHours__c.sObjectType) {
-			return new EmployeeBusinessHoursTriggerHandler();
-		}
-
         if (soType == PersonalAbsences__c.sObjectType) {
 			return new PersonalAbsencesTriggerHandler();
 		}
