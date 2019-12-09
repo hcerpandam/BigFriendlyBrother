@@ -1,0 +1,15 @@
+<template>
+    <div class="slds-m-top_medium slds-m-bottom_x-large">
+        <div class="slds-card">
+            <div class="slds-m-around_medium">
+                <!-- Get's current time when clicked -->
+                <lightning-button label="Iniciar jornada" title="Iniciar jornada action"
+                    icon-name="utility:save" onclick={handleClick} class="slds-m-left_x-small">
+                </lightning-button>
+                <div class="slds-m-vertical_large slds-p-vertical_medium slds-border_top slds-border_bottom">
+                    Hora de inicio de jornada : <span class="slds-text-heading_small">{currTime}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
