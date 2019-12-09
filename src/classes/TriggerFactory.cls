@@ -109,10 +109,6 @@ public with sharing class TriggerFactory {
 			return new TimeRecordControlTriggerHandler();
 		}
 
-        if (soType == MonthlyTimeRecordControl__c.sObjectType) {
-			return new MonthlyTimeRecordControlTriggerHandler();
-		}
-
 		return null;
 	}
 }
