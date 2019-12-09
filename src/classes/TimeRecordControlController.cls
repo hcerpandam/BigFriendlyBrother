@@ -42,7 +42,7 @@ global with sharing class TimeRecordControlController {
         return strToReturn;
     }
 
-    // Get start working hours
+    // Get start working hours and create newTimeRecordControl
     /*@AuraEnabled(cacheable=false)
     public static void saveNewTimeRecordControl__c(String caseToInsert){
 
