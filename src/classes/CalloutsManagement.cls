@@ -121,8 +121,6 @@ global with sharing class CalloutsManagement {
             }
         }
 
-        doUpdateList(lstReceived);
-
         return lstReceived;
     }
 
@@ -156,13 +154,7 @@ global with sharing class CalloutsManagement {
             }
         }
 
-        doUpdateList(lstReceived);
-
         return lstReceived;
-    }
-
-    public static void doUpdateList(List<TimeRecordControl__c> lstToUpdate){
-        update lstToUpdate;
     }
 
 }
