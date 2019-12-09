@@ -48,6 +48,65 @@ public with sharing class TimeRecordControlTriggerHandler implements ITrigger {
         }
 
         if(!String.isBlank(strErrorMsg)){
+            if(u.Profile.Name == EMP_PROF_NAME){
+                boolean proceed = true;
+                if(oldTimeRec.CheckInsertion__c!=null){
+                    if(newTimeRec.CheckInsertion__c != oldTimeRec.CheckInsertion__c){
+                        proceed=false;
+                    }
+                }
+                if(oldTimeRec.BreakStart__c!=null){
+                    if(newTimeRec.BreakStart__c != oldTimeRec.BreakStart__c){
+                        proceed=false;
+                    }
+                }
+                if(oldTimeRec.BreakEnd__c!=null){
+                    if(newTimeRec.BreakEnd__c != oldTimeRec.BreakEnd__c){
+                        proceed=false;
+                    }
+                }
+                if(oldTimeRec.LaunchStart__c!=null){
+                    if(newTimeRec.LaunchStart__c != oldTimeRec.LaunchStart__c){
+                        proceed=false;
+                    }
+                }
+                if(oldTimeRec.LaunchFinish__c!=null){
+                    if(newTimeRec.LaunchFinish__c != oldTimeRec.LaunchFinish__c){
+                        proceed=false;
+                    }
+                }
+                if(oldTimeRec.EndWorkingTime__c!=null){
+                    if(newTimeRec.EndWorkingTime__c != oldTimeRec.EndWorkingTime__c){
+                        proceed=false;
+                    }
+                }
+                if(oldTimeRec.StartWorkingTime__c!=null){
+                    if(newTimeRec.StartWorkingTime__c != oldTimeRec.StartWorkingTime__c){
+                        proceed=false;
+                    }
+                }
+                if(oldTimeRec.StartWorkingHoursGeolocation__c!=null){
+                    if(newTimeRec.StartWorkingHoursGeolocation__c != oldTimeRec.StartWorkingHoursGeolocation__c){
+                        proceed=false;
+                    }
+                }
+                if(oldTimeRec.GeolocationOnCheckEndWorkingHours__c!=null){
+                    if(newTimeRec.GeolocationOnCheckEndWorkingHours__c != oldTimeRec.GeolocationOnCheckEndWorkingHours__c){
+                        proceed=false;
+                    }
+                }
+                if(oldTimeRec.RecordDate__c!=null){
+                    if(newTimeRec.RecordDate__c != oldTimeRec.RecordDate__c){
+                        proceed=false;
+                    }
+                }
+                if(proceed=false){
+                    strErrorMsg = 'No puede modificar los datos insertados en el registro de control';
+                } 
+            }           
+        }
+
+        if(!String.isBlank(strErrorMsg)){
             newTimeRec.addError(strErrorMsg);
         }else if(newTimeRec.Status__c!=oldTimeRec.Status__c){
             System.debug(LoggingLevel.DEBUG,'Profile executing code: '+u.Profile.Name);
