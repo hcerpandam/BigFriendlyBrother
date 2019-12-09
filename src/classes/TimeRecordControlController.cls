@@ -42,6 +42,24 @@ global with sharing class TimeRecordControlController {
         return strToReturn;
     }
 
+    // Get start working hours and create newTimeRecordControl
+    /*@AuraEnabled(cacheable=false)
+    public static void saveNewTimeRecordControl__c(String caseToInsert){
+
+        Case caseObject = (Case)JSON.deserialize(caseToInsert, Case.class);
+
+        Database.SaveResult[] caseResult;
+        caseResult = Database.insert(new List<Case>{caseObject}, false);
+        System.debug('caseResult: ' + caseResult);
+
+        System.debug('result: ' + caseResult);
+		DmlResultWrapper resultWrap = new DmlResultWrapper(caseResult[0]);
+		
+        System.debug('Resultado: '+resultWrap);
+		return JSON.serialize(resultWrap);
+    }*/
+
+
     public class Coordinates{
         Decimal latitude;
         Decimal longitude;

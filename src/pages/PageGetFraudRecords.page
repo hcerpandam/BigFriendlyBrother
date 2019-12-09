@@ -1,0 +1,3 @@
+<apex:page standardController="TimeRecordControl__c" extensions="ControllerGetFraudRecords" recordSetVar="timerecs" action="{!retrieveRecords}" lightningStyleSheets="true">
+
+</apex:page>

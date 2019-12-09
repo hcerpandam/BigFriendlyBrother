@@ -166,6 +166,9 @@
     <label>Sede</label>
     <listViews>
         <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>HeadquartersGeolocation__Latitude__s</columns>
+        <columns>HeadquartersGeolocation__Longitude__s</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>

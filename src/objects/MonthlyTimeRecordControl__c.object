@@ -141,7 +141,17 @@
         <type>Default</type>
     </actionOverrides>
     <allowInChatterGroups>true</allowInChatterGroups>
-    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <compactLayoutAssignment>CompactMonthlyTimeRec</compactLayoutAssignment>
+    <compactLayouts>
+        <fullName>CompactMonthlyTimeRec</fullName>
+        <fields>EmployeeId__c</fields>
+        <fields>Name</fields>
+        <fields>RangeStart__c</fields>
+        <fields>RangeEnd__c</fields>
+        <fields>TotalRecordedByCompany__c</fields>
+        <fields>FinalWage__c</fields>
+        <label>CompactMonthlyTimeRec</label>
+    </compactLayouts>
     <deploymentStatus>Deployed</deploymentStatus>
     <enableActivities>true</enableActivities>
     <enableBulkApi>true</enableBulkApi>
@@ -222,7 +232,13 @@
         <type>AutoNumber</type>
     </nameField>
     <pluralLabel>Registros de control mensuales</pluralLabel>
-    <searchLayouts/>
+    <searchLayouts>
+        <searchResultsAdditionalFields>EmployeeId__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>RangeStart__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>RangeEnd__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>TotalRecordedByCompany__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>FinalWage__c</searchResultsAdditionalFields>
+    </searchLayouts>
     <sharingModel>ControlledByParent</sharingModel>
     <visibility>Public</visibility>
 </CustomObject>

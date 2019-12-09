@@ -210,14 +210,9 @@
     </fields>
     <fields>
         <fullName>EmployeeHasLeftWorkplace__c</fullName>
+        <defaultValue>false</defaultValue>
         <externalId>false</externalId>
-        <formula>IF(
-(LEFT(TEXT( GeolocationOnCheckEndWorkingHours__Latitude__s ), 6) &lt;&gt; LEFT(TEXT( StartWorkingHoursGeolocation__Latitude__s ), 6)) &amp;&amp;
-(LEFT(TEXT( GeolocationOnCheckEndWorkingHours__Longitude__s ), 6) &lt;&gt; LEFT(TEXT( StartWorkingHoursGeolocation__Longitude__s ), 6)) &amp;&amp; 
-((TIMENOW() + (1 * 60 * 60 * 1000) &gt;=  CheckEndWorkingHours__c) &amp;&amp; (TIMENOW() + (1 * 60 * 60 * 1000) &lt;= EndCheckEndWorkingHours__c)),
-TRUE,
-FALSE)</formula>
-        <label>Validación correcta abandono sede</label>
+        <label>Validación abandono de la sede</label>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
@@ -358,6 +353,11 @@ FALSE)</formula>
                     <label>Fraudulento por no registro horas extra</label>
                 </value>
                 <value>
+                    <fullName>Fraudulento por inacción</fullName>
+                    <default>false</default>
+                    <label>Fraudulento por inacción</label>
+                </value>
+                <value>
                     <fullName>Inspeccionar</fullName>
                     <default>false</default>
                     <label>Inspeccionar</label>
@@ -376,11 +376,6 @@ FALSE)</formula>
                     <fullName>Resuelto Inspección</fullName>
                     <default>false</default>
                     <label>Resuelto Inspección</label>
-                </value>
-                <value>
-                    <fullName>Fraudulento por inacción</fullName>
-                    <default>false</default>
-                    <label>Fraudulento por inacción</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
@@ -414,6 +409,26 @@ FALSE)</formula>
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>
+    <listViews>
+        <fullName>LaboursInspectors</fullName>
+        <columns>NAME</columns>
+        <columns>Status__c</columns>
+        <columns>IsCopy__c</columns>
+        <columns>ContentiousCause__c</columns>
+        <columns>EmployeeHasLeftWorkplace__c</columns>
+        <columns>GeolocationOnCheckEndWorkingHours__Latitude__s</columns>
+        <columns>RecordedByCompany__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>IsCopy__c</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <label>Inspección de trabajo</label>
+        <sharedTo>
+            <group>LabourInspectorGroup</group>
+        </sharedTo>
+    </listViews>
     <nameField>
         <displayFormat>RC-{00000000}</displayFormat>
         <label>Referencia</label>
@@ -421,7 +436,22 @@ FALSE)</formula>
         <type>AutoNumber</type>
     </nameField>
     <pluralLabel>Registros de control</pluralLabel>
-    <searchLayouts/>
+    <searchLayouts>
+        <listViewButtons>GetFraudRecords</listViewButtons>
+        <searchResultsCustomButtons>GetFraudRecords</searchResultsCustomButtons>
+    </searchLayouts>
     <sharingModel>ControlledByParent</sharingModel>
     <visibility>Public</visibility>
+    <webLinks>
+        <fullName>GetFraudRecords</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <height>600</height>
+        <linkType>page</linkType>
+        <masterLabel>Obtener registros</masterLabel>
+        <openType>sidebar</openType>
+        <page>PageGetFraudRecords</page>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+    </webLinks>
 </CustomObject>

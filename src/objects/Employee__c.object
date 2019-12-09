@@ -155,7 +155,7 @@
     <fields>
         <fullName>ByContractAnnualWorkingHours__c</fullName>
         <externalId>false</externalId>
-        <formula>2024</formula>
+        <formula>2088</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>Horas anuales por contrato</label>
         <precision>18</precision>
@@ -250,19 +250,6 @@ MonthlyWage__c/28)</formula>
         <type>Currency</type>
     </fields>
     <fields>
-        <fullName>EmployeeBusinessHoursId__c</fullName>
-        <deleteConstraint>Restrict</deleteConstraint>
-        <externalId>false</externalId>
-        <label>Horario de empleado</label>
-        <referenceTo>EmployeeBusinessHours__c</referenceTo>
-        <relationshipLabel>Empleados</relationshipLabel>
-        <relationshipName>Empleados</relationshipName>
-        <required>true</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Lookup</type>
-    </fields>
-    <fields>
         <fullName>EmployeeEmail__c</fullName>
         <caseSensitive>true</caseSensitive>
         <externalId>false</externalId>
@@ -296,16 +283,6 @@ MonthlyWage__c/28)</formula>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Currency</type>
-    </fields>
-    <fields>
-        <fullName>InCompany__c</fullName>
-        <externalId>false</externalId>
-        <formula>LinkedUser__r.IsActive</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>En activo</label>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Checkbox</type>
     </fields>
     <fields>
         <fullName>Level__c</fullName>
