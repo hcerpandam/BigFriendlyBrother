@@ -121,7 +121,7 @@ global with sharing class CalloutsManagement {
             }
         }
 
-        doUpdate(lstReceived);
+        doUpdateList(lstReceived);
 
         return lstReceived;
     }
@@ -156,12 +156,12 @@ global with sharing class CalloutsManagement {
             }
         }
 
-        doUpdate(lstReceived);
+        doUpdateList(lstReceived);
 
         return lstReceived;
     }
 
-    public static void doUpdate(List<TimeRecordControl__c> lstToUpdate){
+    public static void doUpdateList(List<TimeRecordControl__c> lstToUpdate){
         update lstToUpdate;
     }
 
