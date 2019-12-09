@@ -13,10 +13,10 @@
     <label>Big Friendly Brother</label>
     <navType>Standard</navType>
     <tabs>standard-home</tabs>
+    <tabs>AppPageEmployees</tabs>
     <tabs>standard-report</tabs>
     <tabs>standard-Dashboard</tabs>
     <tabs>Employee__c</tabs>
-    <tabs>EmployeeBusinessHours__c</tabs>
     <tabs>PersonalAbsences__c</tabs>
     <tabs>Headquarters__c</tabs>
     <tabs>TimeRecordControl__c</tabs>
