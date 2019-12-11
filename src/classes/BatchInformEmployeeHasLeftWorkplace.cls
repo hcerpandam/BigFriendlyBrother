@@ -69,7 +69,6 @@ global class BatchInformEmployeeHasLeftWorkplace implements Database.Batchable<s
             if(currHour==23){
                 scheduleMe(CRON_INTERVAL_NIGHT, BATCH_SIZE);
                 System.debug(LoggingLevel.DEBUG, 'End of BatchInformEmployeeHasLeftWorkplace at: '+currHour);
-                Database.executeBatch(new BatchDeleteTimeRecordControls());
             }else{
                 scheduleMe(CRON_INTERVAL, BATCH_SIZE);
             }
@@ -78,7 +77,7 @@ global class BatchInformEmployeeHasLeftWorkplace implements Database.Batchable<s
 
     // Util methods
     private static void scheduleMe(Integer interval, Integer batchSize) {
-		System.scheduleBatch(new BatchSendTimeRecordControls(), Test.isRunningTest() ? 'ScheduleTestBatchInformEmployeeHasLeftWorkplace' : 'BatchInformEmployeeHasLeftWorkplace', interval, batchSize);
+		System.scheduleBatch(new BatchInformEmployeeHasLeftWorkplace(), Test.isRunningTest() ? 'ScheduleTestBatchInformEmployeeHasLeftWorkplace' : 'BatchInformEmployeeHasLeftWorkplace', interval, batchSize);
 	}
 
 }

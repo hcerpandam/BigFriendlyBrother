@@ -381,6 +381,17 @@
         </valueSet>
     </fields>
     <fields>
+        <fullName>TemporaryId__c</fullName>
+        <externalId>false</externalId>
+        <label>TemporaryId</label>
+        <length>18</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>TimeRecordControlId__c</fullName>
         <externalId>false</externalId>
         <label>Registro de control mensual</label>
@@ -406,8 +417,30 @@
     <label>Registro de control</label>
     <listViews>
         <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>RecordDate__c</columns>
+        <columns>Status__c</columns>
+        <columns>IsCopy__c</columns>
+        <columns>TimeRecordControlId__c</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
+    </listViews>
+    <listViews>
+        <fullName>FraudAndInspeccionListViewForHHRR</fullName>
+        <columns>NAME</columns>
+        <columns>Status__c</columns>
+        <columns>EndWorkingTime__c</columns>
+        <columns>EmployeeHasLeftWorkplace__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Fraudulento por no registro horas extra,Inspeccionar,Contencioso</value>
+        </filters>
+        <label>Recursos Humanos</label>
+        <sharedTo>
+            <group>HumanResourcesGroup</group>
+        </sharedTo>
     </listViews>
     <listViews>
         <fullName>LaboursInspectors</fullName>
@@ -416,13 +449,17 @@
         <columns>IsCopy__c</columns>
         <columns>ContentiousCause__c</columns>
         <columns>EmployeeHasLeftWorkplace__c</columns>
-        <columns>GeolocationOnCheckEndWorkingHours__Latitude__s</columns>
         <columns>RecordedByCompany__c</columns>
         <filterScope>Everything</filterScope>
         <filters>
             <field>IsCopy__c</field>
             <operation>equals</operation>
             <value>1</value>
+        </filters>
+        <filters>
+            <field>Status__c</field>
+            <operation>equals</operation>
+            <value>Contencioso</value>
         </filters>
         <label>Inspección de trabajo</label>
         <sharedTo>

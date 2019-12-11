@@ -1,0 +1,17 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes" access="global" controller='TimeRecordControlController'>
+	<!--Component attributes definition-->
+    <aura:attribute name="employeeMustWork" type="Boolean" default="true"/>
+    
+    <!--Call init-->
+    <aura:handler name="init" action="{!c.doInit}" value="{!this}"/>
+
+    <div class="spinner">
+        <aura:if isTrue="{! v.employeeMustWork }">
+            <c:employeeCanWork/> <!--Other component-->
+            <aura:set attribute="else">
+                <lightning:spinner alternativeText="No tiene permiso para trabajar hoy"/>
+            </aura:set>
+        </aura:if>
+    </div>
+	
+</aura:component>

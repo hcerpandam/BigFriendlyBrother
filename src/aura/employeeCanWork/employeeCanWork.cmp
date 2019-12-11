@@ -1,0 +1,9 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes" access="global" controller='TimeRecordControlController'>  
+    <!--Definición de componentes-->
+    <aura:attribute name="decLatitude" type="Decimal"/>
+    <aura:attribute name="decLongitude" type="Decimal"/>
+
+    <!--Call init-->
+    <aura:handler name="employeeIsAtHeadquerts" action="{!c.employeeIsAtHeadquerts}" value="{!this}"/>
+	
+</aura:component>

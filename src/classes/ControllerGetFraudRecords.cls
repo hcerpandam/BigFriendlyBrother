@@ -13,8 +13,19 @@ public Class ControllerGetFraudRecords {
         setCon = controller;
     }
 
-    public void retrieveRecords(){  
+    public static void retrieveRecords(){  
         List <TimeRecordControl__c> lstRecords = CalloutsManagement.doGet50KFirstContentious();
         insert lstRecords;
+    }
+    
+    public PageReference validateAndRedirect(){
+
+        PageReference retURL = new PageReference('/lightning/o/TimeRecordControl__c/list?filterName=00B2p00000AXVWMEA5');
+        retURL.setRedirect(true);
+
+        retrieveRecords();
+
+        return retURL;
+
     }
 }
