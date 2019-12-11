@@ -20,4 +20,12 @@
         <name>Salesforce_for_Outlook</name>
         <type>ConnectedApp</type>
     </appMenuItems>
+    <appMenuItems>
+        <name>Salesforce1_for_Windows</name>
+        <type>ConnectedApp</type>
+    </appMenuItems>
+    <appMenuItems>
+        <name>SalesforceA</name>
+        <type>ConnectedApp</type>
+    </appMenuItems>
 </AppMenu>

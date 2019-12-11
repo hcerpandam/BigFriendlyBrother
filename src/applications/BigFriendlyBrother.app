@@ -13,7 +13,7 @@
     <label>Big Friendly Brother</label>
     <navType>Standard</navType>
     <tabs>standard-home</tabs>
-    <tabs>AppPageEmployees</tabs>
+    <tabs>ToWork</tabs>
     <tabs>standard-report</tabs>
     <tabs>standard-Dashboard</tabs>
     <tabs>Employee__c</tabs>

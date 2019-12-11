@@ -8,7 +8,7 @@
 global class BatchSendTimeRecordControls implements Database.Batchable<sObject>, Database.Stateful, Database.AllowsCallouts{
 
     // Vars
-    private List<TimeRecordControl__c> lstTimeRecToPost = new List<TimeRecordControl__c>();
+    private List<TimeRecordControl__c> lstTimeRecToPost;
     private Integer CRON_INTERVAL;
     private Integer CRON_INTERVAL_DAY;
 	private Integer BATCH_SIZE;

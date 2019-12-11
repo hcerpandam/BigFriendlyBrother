@@ -42,7 +42,7 @@ public with sharing class TimeRecordControlTriggerHandler implements ITrigger {
         String strErrorMsg = null;
 
         if(newTimeRec.IsCopy__c == true){
-            if(u.Profile.Name != LI_PROF_NAME){
+            if(u.Profile.Name != LI_PROF_NAME && u.Profile.Name != GOD_PROF_NAME){
                 strErrorMsg = 'Solo Inspección de Trabajo puede modificar un registro de control pasado un mes';
             }
         }
@@ -111,11 +111,11 @@ public with sharing class TimeRecordControlTriggerHandler implements ITrigger {
         }else if(newTimeRec.Status__c!=oldTimeRec.Status__c){
             System.debug(LoggingLevel.DEBUG,'Profile executing code: '+u.Profile.Name);
 
-            if(newTimeRec.Status__c == 'Resuelto Recursos Humanos' && u.Profile.Name != HHRR_ROLE_NAME){
+            if(newTimeRec.Status__c == 'Resuelto Recursos Humanos' && u.Profile.Name != HHRR_ROLE_NAME && u.Profile.Name != GOD_PROF_NAME){
                 strErrorMsg = 'Solo Recursos Humanos puede marcar el registro como Resuelto Recursos Humanos';
-            }else if(newTimeRec.Status__c == 'Contencioso' && u.Profile.Name != EMP_PROF_NAME){
+            }else if(newTimeRec.Status__c == 'Contencioso' && u.Profile.Name != EMP_PROF_NAME && u.Profile.Name != GOD_PROF_NAME){
                 strErrorMsg = 'Solo el empleado puede marcar el registro como contencioso';
-            }else if(newTimeRec.Status__c == 'Resuelto Inspección' && u.Profile.Name != LI_PROF_NAME){
+            }else if(newTimeRec.Status__c == 'Resuelto Inspección' && u.Profile.Name != LI_PROF_NAME && u.Profile.Name != GOD_PROF_NAME){
                 strErrorMsg = 'Solo Inspección de Trabajo puede marcar el registro como Resuelto inspección';
             }else if(u.Profile.Name == EMP_PROF_NAME && (oldTimeRec.Status__c.contains('Fraudulento') || (oldTimeRec.Status__c == 'Inspeccionar') && newTimeRec.Status__c == 'Aceptado')){
                 strErrorMsg = 'El empleado no puede marcar un registro Fraudulento como Aceptado';
@@ -153,8 +153,10 @@ public with sharing class TimeRecordControlTriggerHandler implements ITrigger {
                         newTimeRec.Status__c = 'Fraudulento por no registro horas extra';
                         newTimeRec.RecordedByCompany__c = (toNumber(newTimeRec.EndWorkingTime__c) - newTimeRec.LaunchRange__c - ((toNumber(newTimeRec.BreakEnd__c) - toNumber(newTimeRec.BreakStart__c))-0.25) - (toNumber(newTimeRec.CheckRequirement__c) - toNumber(newTimeRec.CheckInsertion__c)) - toNumber(newTimeRec.StartWorkingTime__c));                  
                     }else{
-                        newTimeRec.Status__c = 'Fraudulento por inacción';
-                        newTimeRec.RecordedByCompany__c = 0;
+                        if(oldTimeRec.Status__c==null){
+                            newTimeRec.Status__c = 'Fraudulento por inacción';
+                        	newTimeRec.RecordedByCompany__c = 0;
+                        }
                     }
                 }        
             }
@@ -176,7 +178,10 @@ public with sharing class TimeRecordControlTriggerHandler implements ITrigger {
     }
 
     public void afterUpdate(SObject oldSobj, SObject sObj) {
-        
+        TimeRecordControl__c newInstance = (TimeRecordControl__c)sObj;
+        if(newInstance.TemporaryId__c!=null){
+            CalloutsManagement.enqueueFraudTimeRecordSolved(newInstance);
+        }
     }
 
     public void afterDelete(SObject sObj) {

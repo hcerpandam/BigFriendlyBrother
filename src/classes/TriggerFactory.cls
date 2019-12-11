@@ -101,10 +101,6 @@ public with sharing class TriggerFactory {
 			return new PersonalAbsencesTriggerHandler();
 		}
 
-        if (soType == Headquarters__c.sObjectType) {
-			return new HeadquartersTriggerHandler();
-		}
-
         if (soType == TimeRecordControl__c.sObjectType) {
 			return new TimeRecordControlTriggerHandler();
 		}
